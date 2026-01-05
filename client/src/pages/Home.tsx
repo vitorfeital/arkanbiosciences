@@ -61,7 +61,7 @@ export default function Home() {
                 size="lg"
                 className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500 group"
               >
-                Browse Catalog
+                What does we do?
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
