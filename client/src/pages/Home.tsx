@@ -46,7 +46,7 @@ export default function Home() {
             <h1 className={`text-5xl md:text-7xl font-bold leading-tight transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               Global Health.{" "}
               <span className="bg-gradient-to-r from-[oklch(0.50_0.20_200)] via-[oklch(0.45_0.22_280)] to-[oklch(0.50_0.25_340)] bg-clip-text text-transparent">
-                Tru Solutions.
+                True Solutions.
               </span>
             </h1>
 
