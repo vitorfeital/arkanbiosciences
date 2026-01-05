@@ -42,55 +42,54 @@
   --color-sidebar-ring: var(--sidebar-ring);
   
   /* Custom brand colors from Tru & Co logo */
-  --color-cyan: oklch(0.75 0.15 200);
-  --color-purple: oklch(0.6 0.18 280);
-  --color-magenta: oklch(0.65 0.22 340);
+  --color-cyan: oklch(0.65 0.15 200);
+  --color-purple: oklch(0.55 0.18 280);
+  --color-magenta: oklch(0.60 0.22 340);
 }
 
-/* Luminous Depth Design Philosophy:
-   - Dark atmospheric background with gradient
-   - Glassmorphic cards with backdrop blur
-   - Glow effects using brand colors
-   - Multiple depth layers with transparency
-   - Sora for headings, DM Sans for body
+/* Light Theme with Molecular Background:
+   - Light molecular pattern background
+   - Dark text for readability
+   - Vibrant accent colors from logo
+   - Clean, professional aesthetic
 */
 
 :root {
-  --primary: oklch(0.75 0.15 200); /* Cyan */
+  --primary: oklch(0.55 0.18 200); /* Darker cyan for better contrast */
   --primary-foreground: oklch(0.98 0.01 200);
-  --sidebar-primary: oklch(0.75 0.15 200);
+  --sidebar-primary: oklch(0.55 0.18 200);
   --sidebar-primary-foreground: oklch(0.98 0.01 200);
-  --chart-1: oklch(0.75 0.15 200);
-  --chart-2: oklch(0.6 0.18 280);
-  --chart-3: oklch(0.65 0.22 340);
-  --chart-4: oklch(0.55 0.12 260);
+  --chart-1: oklch(0.65 0.15 200);
+  --chart-2: oklch(0.55 0.18 280);
+  --chart-3: oklch(0.60 0.22 340);
+  --chart-4: oklch(0.50 0.12 260);
   --chart-5: oklch(0.45 0.08 240);
   --radius: 1.5rem;
   
-  /* Dark atmospheric theme */
-  --background: oklch(0.12 0.02 260); /* Deep dark blue-purple */
-  --foreground: oklch(0.95 0.01 260);
-  --card: oklch(0.18 0.03 260 / 0.4); /* Glassmorphic with transparency */
-  --card-foreground: oklch(0.95 0.01 260);
-  --popover: oklch(0.16 0.03 260 / 0.95);
-  --popover-foreground: oklch(0.95 0.01 260);
-  --secondary: oklch(0.22 0.04 260 / 0.6);
-  --secondary-foreground: oklch(0.9 0.01 260);
-  --muted: oklch(0.25 0.03 260 / 0.5);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.75 0.15 200 / 0.15); /* Cyan with transparency */
-  --accent-foreground: oklch(0.95 0.01 200);
-  --destructive: oklch(0.65 0.22 20);
+  /* Light theme with molecular background */
+  --background: oklch(0.97 0.005 260); /* Very light background */
+  --foreground: oklch(0.20 0.02 260); /* Dark text for contrast */
+  --card: oklch(0.99 0.002 260 / 0.8); /* Nearly white cards with slight transparency */
+  --card-foreground: oklch(0.20 0.02 260);
+  --popover: oklch(0.99 0.002 260 / 0.98);
+  --popover-foreground: oklch(0.20 0.02 260);
+  --secondary: oklch(0.94 0.01 260 / 0.6);
+  --secondary-foreground: oklch(0.25 0.02 260);
+  --muted: oklch(0.92 0.01 260 / 0.5);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.55 0.18 200 / 0.15); /* Cyan accent */
+  --accent-foreground: oklch(0.20 0.02 200);
+  --destructive: oklch(0.55 0.22 20);
   --destructive-foreground: oklch(0.98 0.01 20);
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.1);
-  --ring: oklch(0.75 0.15 200);
-  --sidebar: oklch(0.16 0.03 260 / 0.95);
-  --sidebar-foreground: oklch(0.95 0.01 260);
-  --sidebar-accent: oklch(0.22 0.04 260 / 0.6);
-  --sidebar-accent-foreground: oklch(0.95 0.01 260);
-  --sidebar-border: oklch(1 0 0 / 0.08);
-  --sidebar-ring: oklch(0.75 0.15 200);
+  --border: oklch(0.20 0.02 260 / 0.12);
+  --input: oklch(0.20 0.02 260 / 0.15);
+  --ring: oklch(0.55 0.18 200);
+  --sidebar: oklch(0.99 0.002 260 / 0.95);
+  --sidebar-foreground: oklch(0.20 0.02 260);
+  --sidebar-accent: oklch(0.94 0.01 260 / 0.6);
+  --sidebar-accent-foreground: oklch(0.20 0.02 260);
+  --sidebar-border: oklch(0.20 0.02 260 / 0.12);
+  --sidebar-ring: oklch(0.55 0.18 200);
 }
 
 @layer base {
@@ -100,12 +99,18 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-image: url('/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
+    color: oklch(0.20 0.02 260); /* Dark headings for readability */
   }
   
   button:not(:disabled),
@@ -150,34 +155,31 @@
     }
   }
   
-  /* Glassmorphic card effect */
+  /* Glass card effect for light theme */
   .glass-card {
-    background: oklch(0.18 0.03 260 / 0.4);
+    background: oklch(0.99 0.002 260 / 0.85);
     backdrop-filter: blur(20px);
-    border: 1px solid oklch(1 0 0 / 0.1);
+    border: 1px solid oklch(0.20 0.02 260 / 0.1);
   }
   
-  /* Glow effects for interactive elements */
+  /* Glow effects adapted for light theme */
   .glow-cyan {
-    box-shadow: 0 0 20px oklch(0.75 0.15 200 / 0.3),
-                0 0 40px oklch(0.75 0.15 200 / 0.15),
-                0 0 60px oklch(0.75 0.15 200 / 0.05);
+    box-shadow: 0 4px 20px oklch(0.65 0.15 200 / 0.25),
+                0 2px 10px oklch(0.65 0.15 200 / 0.15);
   }
   
   .glow-purple {
-    box-shadow: 0 0 20px oklch(0.6 0.18 280 / 0.3),
-                0 0 40px oklch(0.6 0.18 280 / 0.15),
-                0 0 60px oklch(0.6 0.18 280 / 0.05);
+    box-shadow: 0 4px 20px oklch(0.55 0.18 280 / 0.25),
+                0 2px 10px oklch(0.55 0.18 280 / 0.15);
   }
   
   .glow-magenta {
-    box-shadow: 0 0 20px oklch(0.65 0.22 340 / 0.3),
-                0 0 40px oklch(0.65 0.22 340 / 0.15),
-                0 0 60px oklch(0.65 0.22 340 / 0.05);
+    box-shadow: 0 4px 20px oklch(0.60 0.22 340 / 0.25),
+                0 2px 10px oklch(0.60 0.22 340 / 0.15);
   }
 }
 
-/* Atmospheric background gradient animation */
+/* Subtle animation for gradient accents */
 @keyframes gradient-shift {
   0%, 100% {
     background-position: 0% 50%;

@@ -7,7 +7,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-background/50 backdrop-blur-xl">
+    <footer className="relative border-t border-gray-200 bg-white/80 backdrop-blur-xl">
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Column */}
@@ -17,20 +17,20 @@ export default function Footer() {
               alt="Tru & Co"
               className="h-10 w-auto"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               Transforming ideas into reality through innovative and reliable solutions.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
             <ul className="space-y-3">
               {["Home", "About", "Services", "Contact"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
                   >
                     {item}
                   </a>
@@ -41,13 +41,13 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Services</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
             <ul className="space-y-3">
               {["Consulting", "Development", "Support", "Training"].map((item) => (
                 <li key={item}>
                   <a
                     href="#services"
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
                   >
                     {item}
                   </a>
@@ -58,17 +58,17 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Contact</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3 text-sm text-gray-600">
                 <Mail size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
                 <span>contact@truandco.com</span>
               </li>
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3 text-sm text-gray-600">
                 <Phone size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
                 <span>+55 (11) 9999-9999</span>
               </li>
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3 text-sm text-gray-600">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
                 <span>São Paulo, Brazil</span>
               </li>
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
           <p>&copy; {new Date().getFullYear()} Tru & Co. All rights reserved.</p>
         </div>
       </div>
