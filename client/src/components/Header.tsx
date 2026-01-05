@@ -13,14 +13,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Início", href: "/" },
-    { label: "Sobre", href: "#about" },
-    { label: "Serviços", href: "#services" },
-    { label: "Contato", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-sm">
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -38,7 +38,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground/80 hover:text-foreground transition-all duration-300 font-medium hover:drop-shadow-[0_0_8px_rgba(79,195,247,0.6)]"
+                className="text-gray-700 hover:text-gray-900 transition-all duration-300 font-medium hover:text-[oklch(0.75_0.15_200)]"
               >
                 {item.label}
               </a>
@@ -47,13 +47,13 @@ export default function Header() {
               className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500"
               size="lg"
             >
-              Começar
+              Get Started
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-gray-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -63,12 +63,12 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-6 space-y-4 border-t border-white/10">
+          <nav className="md:hidden py-6 space-y-4 border-t border-gray-200">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block text-foreground/80 hover:text-foreground transition-colors py-2"
+                className="block text-gray-700 hover:text-gray-900 transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
@@ -78,7 +78,7 @@ export default function Header() {
               className="w-full bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)]"
               size="lg"
             >
-              Começar
+              Get Started
             </Button>
           </nav>
         )}

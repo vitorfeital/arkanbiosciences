@@ -18,15 +18,15 @@ export default function Footer() {
               className="h-10 w-auto"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Transformando ideias em realidade através de soluções inovadoras e confiáveis.
+              Transforming ideas into reality through innovative and reliable solutions.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Links Rápidos</h3>
+            <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {["Início", "Sobre", "Serviços", "Contato"].map((item) => (
+              {["Home", "About", "Services", "Contact"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
@@ -41,9 +41,9 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Serviços</h3>
+            <h3 className="font-semibold text-foreground mb-4">Services</h3>
             <ul className="space-y-3">
-              {["Consultoria", "Desenvolvimento", "Suporte", "Treinamento"].map((item) => (
+              {["Consulting", "Development", "Support", "Training"].map((item) => (
                 <li key={item}>
                   <a
                     href="#services"
@@ -58,11 +58,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Contato</h3>
+            <h3 className="font-semibold text-foreground mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Mail size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
-                <span>contato@truandco.com</span>
+                <span>contact@truandco.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Phone size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
@@ -70,14 +70,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
-                <span>São Paulo, Brasil</span>
+                <span>São Paulo, Brazil</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Tru & Co. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Tru & Co. All rights reserved.</p>
         </div>
       </div>
     </footer>

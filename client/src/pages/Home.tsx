@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,27 +52,27 @@ export default function Home() {
             {/* Badges */}
             <div className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.75_0.15_200)]/30 glow-cyan">
-                Certificado ISO 9001
+                ISO 9001 Certified
               </span>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.6_0.18_280)]/30 glow-purple">
-                99%+ Satisfação
+                99%+ Satisfaction
               </span>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.65_0.22_340)]/30 glow-magenta">
-                Distribuição Global
+                Global Distribution
               </span>
             </div>
 
             {/* Main Heading */}
             <h1 className={`text-5xl md:text-7xl font-bold leading-tight transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Soluções de Precisão para{" "}
+              Precision Solutions for{" "}
               <span className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] via-[oklch(0.6_0.18_280)] to-[oklch(0.65_0.22_340)] bg-clip-text text-transparent">
-                Pesquisa Avançada
+                Advanced Research
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className={`text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Fonte confiável para produtos de qualidade farmacêutica. Testados por terceiros, pré-misturados e prontos para uso em laboratório.
+              Trusted source for pharmaceutical-grade research products. Third-party tested, pre-mixed, and ready for laboratory use.
             </p>
 
             {/* CTA Buttons */}
@@ -81,7 +81,7 @@ export default function Home() {
                 size="lg"
                 className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_40px_rgba(79,195,247,0.5)] transition-all duration-500 group"
               >
-                Explorar Catálogo
+                Browse Catalog
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -89,17 +89,17 @@ export default function Home() {
                 variant="outline"
                 className="text-lg px-8 py-6 glass-card border-white/20 hover:border-[oklch(0.75_0.15_200)] hover:bg-[oklch(0.75_0.15_200)]/10 transition-all duration-500"
               >
-                Ver Certificados
+                View Certificates
               </Button>
             </div>
 
             {/* Stats */}
             <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {[
-                { value: "99%+", label: "Pureza Garantida" },
-                { value: "24h", label: "Tempo de Envio" },
-                { value: "10k+", label: "Clientes Atendidos" },
-                { value: "4.9/5", label: "Avaliação Média" },
+                { value: "99%+", label: "Purity Guaranteed" },
+                { value: "24h", label: "Dispatch Time" },
+                { value: "10k+", label: "Orders Shipped" },
+                { value: "4.9/5", label: "Average Rating" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] bg-clip-text text-transparent">
@@ -120,13 +120,13 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Por que escolher a{" "}
+              Why Choose{" "}
               <span className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.65_0.22_340)] bg-clip-text text-transparent">
                 Tru & Co
               </span>
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Excelência comprovada em cada aspecto do nosso trabalho
+              Proven excellence in every aspect of our work
             </p>
           </div>
 
@@ -134,22 +134,22 @@ export default function Home() {
             {[
               {
                 icon: Sparkles,
-                title: "Inovação Contínua",
-                description: "Utilizamos as mais recentes tecnologias e metodologias para entregar soluções de ponta que superam expectativas.",
+                title: "Continuous Innovation",
+                description: "We leverage the latest technologies and methodologies to deliver cutting-edge solutions that exceed expectations.",
                 image: "/images/feature-innovation.png",
                 glowClass: "glow-cyan",
               },
               {
                 icon: Award,
-                title: "Qualidade Premium",
-                description: "Cada produto passa por rigorosos testes de qualidade, garantindo os mais altos padrões da indústria.",
+                title: "Premium Quality",
+                description: "Every product undergoes rigorous quality testing, ensuring the highest industry standards are met.",
                 image: "/images/feature-quality.png",
                 glowClass: "glow-purple",
               },
               {
                 icon: Shield,
-                title: "Confiança Total",
-                description: "Certificações internacionais e processos transparentes para sua total segurança e tranquilidade.",
+                title: "Total Trust",
+                description: "International certifications and transparent processes for your complete security and peace of mind.",
                 image: "/images/feature-trust.png",
                 glowClass: "glow-magenta",
               },
@@ -188,10 +188,10 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Nossos Serviços
+              Our Services
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Soluções completas para todas as suas necessidades
+              Complete solutions for all your needs
             </p>
           </div>
 
@@ -199,33 +199,33 @@ export default function Home() {
             {[
               {
                 icon: Zap,
-                title: "Entrega Rápida",
-                description: "Processamento em 24h com rastreamento em tempo real",
+                title: "Fast Delivery",
+                description: "24h processing with real-time tracking",
               },
               {
                 icon: Shield,
-                title: "Segurança Total",
-                description: "Protocolos rigorosos de segurança e conformidade",
+                title: "Total Security",
+                description: "Rigorous security and compliance protocols",
               },
               {
                 icon: Users,
-                title: "Suporte Dedicado",
-                description: "Equipe especializada disponível para auxiliar",
+                title: "Dedicated Support",
+                description: "Specialized team available to assist",
               },
               {
                 icon: Award,
-                title: "Certificações",
-                description: "Padrões internacionais de qualidade garantidos",
+                title: "Certifications",
+                description: "Guaranteed international quality standards",
               },
               {
                 icon: Clock,
-                title: "Disponibilidade",
-                description: "Estoque sempre disponível para pronta entrega",
+                title: "Availability",
+                description: "Stock always available for immediate delivery",
               },
               {
                 icon: Sparkles,
-                title: "Personalização",
-                description: "Soluções customizadas para suas necessidades",
+                title: "Customization",
+                description: "Customized solutions for your needs",
               },
             ].map((service, index) => (
               <Card
@@ -261,24 +261,24 @@ export default function Home() {
         <div className="container relative z-10">
           <Card className="glass-card p-12 md:p-16 text-center max-w-4xl mx-auto border-white/10 glow-cyan">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Pronto para começar?
+              Ready to get started?
             </h2>
             <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
-              Entre em contato conosco hoje e descubra como podemos transformar suas ideias em realidade com nossas soluções inovadoras.
+              Contact us today and discover how we can transform your ideas into reality with our innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
                 className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_40px_rgba(79,195,247,0.5)] transition-all duration-500"
               >
-                Fale Conosco
+                Contact Us
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="text-lg px-8 py-6 glass-card border-white/20 hover:border-[oklch(0.75_0.15_200)] hover:bg-[oklch(0.75_0.15_200)]/10 transition-all duration-500"
               >
-                Ver Demonstração
+                View Demo
               </Button>
             </div>
           </Card>
