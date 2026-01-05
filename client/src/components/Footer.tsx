@@ -67,7 +67,7 @@ export default function Footer() {
 
               <li className="flex items-start gap-3 text-sm text-gray-600">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
-                <span>São Paulo, Brazil</span>
+                <span>Orlando, FL</span>
               </li>
             </ul>
           </div>
