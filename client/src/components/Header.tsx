@@ -1,0 +1,88 @@
+/**
+ * Header Component - Luminous Depth Design
+ * Glassmorphic navigation bar with logo and menu items
+ * Sticky positioning with backdrop blur effect
+ */
+
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Link } from "wouter";
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Início", href: "/" },
+    { label: "Sobre", href: "#about" },
+    { label: "Serviços", href: "#services" },
+    { label: "Contato", href: "#contact" },
+  ];
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+      <div className="container">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/">
+            <img
+              src="/images/logo.png"
+              alt="Tru & Co"
+              className="h-12 w-auto transition-all duration-500 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(79,195,247,0.5)]"
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-foreground/80 hover:text-foreground transition-all duration-300 font-medium hover:drop-shadow-[0_0_8px_rgba(79,195,247,0.6)]"
+              >
+                {item.label}
+              </a>
+            ))}
+            <Button
+              className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500"
+              size="lg"
+            >
+              Começar
+            </Button>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden py-6 space-y-4 border-t border-white/10">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block text-foreground/80 hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <Button
+              className="w-full bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)]"
+              size="lg"
+            >
+              Começar
+            </Button>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+}
