@@ -62,12 +62,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-gray-600">
                 <Mail size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
-                <span>contact@truandco.com</span>
+                <span>support@tru-co.com</span>
               </li>
-              <li className="flex items-start gap-3 text-sm text-gray-600">
-                <Phone size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
-                <span>+55 (11) 9999-9999</span>
-              </li>
+
               <li className="flex items-start gap-3 text-sm text-gray-600">
                 <MapPin size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
                 <span>São Paulo, Brazil</span>
