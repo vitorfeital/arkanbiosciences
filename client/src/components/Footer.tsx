@@ -100,6 +100,13 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* FDA Disclaimer */}
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <p className="text-[10px] text-gray-400 leading-relaxed text-center max-w-4xl mx-auto">
+            <span className="font-medium text-gray-500">DISCLAIMER:</span> These products are not approved by the U.S. Food and Drug Administration (FDA) for human consumption or medical applications. They must not be used for any purpose other than scientific research. Statements presented on this website have not been evaluated by the U.S. Food and Drug Administration (FDA).
+          </p>
+        </div>
       </div>
     </footer>
   );
