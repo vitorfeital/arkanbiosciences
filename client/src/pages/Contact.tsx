@@ -1,6 +1,6 @@
 /**
  * Contact Page - Luminous Depth Design
- * Contact form with required fields and reCAPTCHA
+ * Contact form with Web3Forms integration and reCAPTCHA
  * Colors: Cyan (#4FC3F7), Purple (#7B2CBF), Magenta (#E91E8C)
  */
 
@@ -22,6 +22,7 @@ declare global {
         'expired-callback': () => void;
       }) => number;
       reset: (widgetId?: number) => void;
+      getResponse: (widgetId?: number) => string;
     };
     onRecaptchaLoad: () => void;
   }
@@ -43,6 +44,9 @@ interface FormErrors {
   recaptcha?: string;
 }
 
+// Web3Forms Access Key - Get yours free at https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -61,7 +65,6 @@ export default function Contact() {
 
   // Load reCAPTCHA script
   useEffect(() => {
-    // Check if script already exists
     if (document.querySelector('script[src*="recaptcha"]')) {
       if (window.grecaptcha) {
         setRecaptchaLoaded(true);
@@ -69,7 +72,6 @@ export default function Contact() {
       return;
     }
 
-    // Define callback before loading script
     window.onRecaptchaLoad = () => {
       setRecaptchaLoaded(true);
     };
@@ -81,19 +83,17 @@ export default function Contact() {
     document.head.appendChild(script);
 
     return () => {
-      // Cleanup
       window.onRecaptchaLoad = undefined as unknown as () => void;
     };
   }, []);
 
-  // Render reCAPTCHA widget when loaded
   const renderRecaptcha = useCallback(() => {
     if (recaptchaLoaded && window.grecaptcha && recaptchaWidgetId === null) {
       const container = document.getElementById("recaptcha-container");
       if (container && container.childElementCount === 0) {
         try {
           const widgetId = window.grecaptcha.render("recaptcha-container", {
-            sitekey: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI", // Google test key for development
+            sitekey: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI", // Google test key - replace with your own
             callback: (token: string) => {
               setRecaptchaToken(token);
               setErrors(prev => ({ ...prev, recaptcha: undefined }));
@@ -112,7 +112,6 @@ export default function Contact() {
 
   useEffect(() => {
     if (recaptchaLoaded) {
-      // Small delay to ensure DOM is ready
       const timer = setTimeout(renderRecaptcha, 100);
       return () => clearTimeout(timer);
     }
@@ -151,7 +150,6 @@ export default function Contact() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -167,28 +165,56 @@ export default function Contact() {
     
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success("Message sent successfully!");
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
+    try {
+      // Send to Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
+          from_name: "TRU & CO Website",
+          to: "support@tru-co.com",
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          message: formData.message,
+          "g-recaptcha-response": recaptchaToken,
+        }),
       });
-      setRecaptchaToken(null);
-      if (window.grecaptcha && recaptchaWidgetId !== null) {
-        window.grecaptcha.reset(recaptchaWidgetId);
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success("Message sent successfully!");
+        
+        setTimeout(() => {
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            message: "",
+          });
+          setRecaptchaToken(null);
+          if (window.grecaptcha && recaptchaWidgetId !== null) {
+            window.grecaptcha.reset(recaptchaWidgetId);
+          }
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error(result.message || "Failed to send message");
       }
-      setIsSubmitted(false);
-    }, 3000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
