@@ -100,14 +100,35 @@ export default function Home() {
           <source src="/images/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark Overlay for better visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
-        {/* Logo overlay on video */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <img 
-            src="/images/logo.png" 
-            alt="Tru & Co" 
-            className="w-32 md:w-48 lg:w-64 opacity-90 drop-shadow-2xl"
-          />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
+        
+        {/* Logo and Text in bottom left corner */}
+        <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex items-center gap-4 md:gap-6">
+          {/* Animated Logo with rotation and glow */}
+          <div className="relative">
+            <img 
+              src="/images/logo.png" 
+              alt="Tru & Co" 
+              className="w-20 md:w-28 lg:w-36 drop-shadow-2xl animate-[spin_20s_linear_infinite]"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(79, 195, 247, 0.6)) drop-shadow(0 0 40px rgba(156, 39, 176, 0.4))',
+              }}
+            />
+            {/* Glow effect behind logo */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-purple-500/30 to-pink-500/30 blur-xl rounded-full animate-pulse" />
+          </div>
+          
+          {/* Text appearing beside logo */}
+          <div className="overflow-hidden">
+            <p 
+              className="text-white text-lg md:text-2xl lg:text-3xl font-bold font-['Sora'] tracking-wide animate-[slideInRight_1.5s_ease-out_forwards]"
+              style={{
+                textShadow: '0 0 20px rgba(79, 195, 247, 0.8), 0 0 40px rgba(156, 39, 176, 0.6), 2px 2px 4px rgba(0,0,0,0.5)',
+              }}
+            >
+              Lab-Tested Peptides At An Affordable Price
+            </p>
+          </div>
         </div>
       </section>
 
