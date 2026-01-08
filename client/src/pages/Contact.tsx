@@ -268,7 +268,7 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">Email Us</h3>
-                  <p className="text-gray-600 text-sm mb-3">We'll respond within 24 hours</p>
+                  <p className="text-gray-600 text-sm mb-3">We'll respond within 48 hours</p>
                   <a href="mailto:support@tru-co.com" className="text-[oklch(0.5_0.15_200)] font-medium hover:text-[oklch(0.4_0.18_280)] transition-colors">
                     support@tru-co.com
                   </a>
@@ -286,7 +286,7 @@ export default function Contact() {
 
                 {/* Business Hours Card */}
                 <div className="bg-gradient-to-br from-[#1A365D] to-[#1e3a5f] rounded-2xl p-6 text-white">
-                  <h3 className="text-lg font-bold mb-4 font-['Sora']">Business Hours</h3>
+                  <h3 className="text-lg font-bold mb-4 font-['Sora']" style={{color: '#06f9d0'}}>Business Hours</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-white/70">Monday - Friday</span>
