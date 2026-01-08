@@ -160,6 +160,48 @@ export default function Home() {
         {/* Dark Overlay for better visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
         
+        {/* Certification Badges in top right corner */}
+        <div className="absolute top-20 right-4 md:top-24 md:right-8 flex flex-col gap-3">
+          {/* GMP Certified Badge */}
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-white/50 hover:scale-105 transition-transform">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="text-xs md:text-sm font-bold text-gray-800">GMP</p>
+              <p className="text-[10px] md:text-xs text-gray-600">Certified</p>
+            </div>
+          </div>
+          
+          {/* ISO 9001 Badge */}
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-white/50 hover:scale-105 transition-transform">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="text-xs md:text-sm font-bold text-gray-800">ISO 9001</p>
+              <p className="text-[10px] md:text-xs text-gray-600">Certified</p>
+            </div>
+          </div>
+          
+          {/* Third Party Tested Badge */}
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-white/50 hover:scale-105 transition-transform">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="text-xs md:text-sm font-bold text-gray-800">3rd Party</p>
+              <p className="text-[10px] md:text-xs text-gray-600">Tested</p>
+            </div>
+          </div>
+        </div>
+        
         {/* Logo and Text in bottom left corner */}
         <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex items-center gap-4 md:gap-6">
           {/* Logo with subtle glow pulse effect */}
