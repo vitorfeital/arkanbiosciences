@@ -87,8 +87,32 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
 
+      {/* Video Banner Section */}
+      <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark Overlay for better visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
+        {/* Logo overlay on video */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <img 
+            src="/images/logo.png" 
+            alt="Tru & Co" 
+            className="w-32 md:w-48 lg:w-64 opacity-90 drop-shadow-2xl"
+          />
+        </div>
+      </section>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-12 pb-8">
         {/* Gradient Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
 
