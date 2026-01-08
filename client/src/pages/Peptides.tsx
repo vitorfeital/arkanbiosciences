@@ -136,7 +136,7 @@ export default function Peptides() {
               transition={{ duration: 0.6 }}
               className="bg-gradient-to-r from-[#1A365D] to-[#1e3a5f] rounded-2xl p-8 md:p-10 text-white"
             >
-              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Sora']">Purpose and Scope</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Sora']" style={{color: '#83cec1'}}>Purpose and Scope</h2>
               <p className="text-white/90 leading-relaxed">
                 This document provides high-level, non-promotional, educational information regarding peptides and related bioactive compounds as discussed in peer-reviewed scientific literature. <strong>No statements herein are intended to diagnose, treat, cure, mitigate, or prevent any disease.</strong> Regulatory status, permitted uses, and safety profiles vary by jurisdiction.
               </p>
