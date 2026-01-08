@@ -172,7 +172,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Enhanced with background images and reflective icons */}
       <section id="services" className="relative py-32">
         <div className="container">
           <div className="text-center mb-16">
@@ -191,47 +191,124 @@ export default function Home() {
                 title: "Fast Delivery",
                 description: "24h processing with real-time tracking",
                 color: "oklch(0.50_0.20_200)",
+                bgColor: "from-cyan-500/10 to-blue-500/5",
+                image: "/images/service-delivery.jpg",
               },
               {
                 icon: Shield,
                 title: "Total Security",
                 description: "Rigorous security and compliance protocols",
                 color: "oklch(0.45_0.22_280)",
+                bgColor: "from-purple-500/10 to-indigo-500/5",
+                image: "/images/service-security.jpg",
               },
               {
                 icon: Users,
                 title: "Dedicated Support",
                 description: "Specialized team available to assist",
                 color: "oklch(0.50_0.25_340)",
+                bgColor: "from-pink-500/10 to-rose-500/5",
+                image: "/images/service-support.jpg",
               },
               {
                 icon: Award,
                 title: "Certifications",
                 description: "Guaranteed international quality standards",
                 color: "oklch(0.50_0.20_200)",
+                bgColor: "from-cyan-500/10 to-teal-500/5",
+                image: "/images/service-certification.jpg",
               },
               {
                 icon: Clock,
                 title: "Availability",
                 description: "Stock always available for immediate delivery",
                 color: "oklch(0.45_0.22_280)",
+                bgColor: "from-violet-500/10 to-purple-500/5",
+                image: "/images/service-availability.jpg",
               },
               {
                 icon: Sparkles,
                 title: "Customization",
                 description: "Customized solutions for your needs",
                 color: "oklch(0.50_0.25_340)",
+                bgColor: "from-fuchsia-500/10 to-pink-500/5",
+                image: "/images/service-customization.jpg",
               },
             ].map((service, index) => (
               <Card
                 key={index}
-                className="glass-card p-6 hover:border-[oklch(0.55_0.18_200)]/50 transition-all duration-500 group border-gray-200"
+                className="relative overflow-hidden p-6 hover:shadow-xl transition-all duration-500 group border-gray-200/50 bg-white/80 backdrop-blur-sm"
+                style={{
+                  minHeight: '200px',
+                }}
               >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-[${service.color}]/20 to-[${service.color}]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500`}>
-                  <service.icon size={24} style={{ color: service.color }} />
+                {/* Background Image with Fade Effect */}
+                <div 
+                  className="absolute inset-0 transition-all duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url(${service.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    opacity: 0.08,
+                  }}
+                />
+                
+                {/* Gradient Overlay for fade effect */}
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-60 group-hover:opacity-80 transition-opacity duration-500`}
+                />
+                
+                {/* Radial fade from center */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-transparent"
+                />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon with Reflective Effect */}
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 relative"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.9) 100%)`,
+                      boxShadow: `0 4px 20px ${service.color.replace('oklch', 'oklch').replace(')', '/0.3)')}, inset 0 1px 0 rgba(255,255,255,0.8)`,
+                      border: '1px solid rgba(255,255,255,0.5)',
+                    }}
+                  >
+                    {/* Reflective shine effect */}
+                    <div 
+                      className="absolute inset-0 rounded-xl overflow-hidden"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 50%, rgba(255,255,255,0.2) 100%)',
+                      }}
+                    />
+                    {/* Icon reflection/glow */}
+                    <div 
+                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-4 rounded-full blur-md opacity-40 group-hover:opacity-60 transition-opacity"
+                      style={{
+                        background: service.color,
+                      }}
+                    />
+                    <service.icon 
+                      size={26} 
+                      style={{ 
+                        color: service.color,
+                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+                      }} 
+                      className="relative z-10"
+                    />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 drop-shadow-sm">{service.title}</h3>
+                  <p className="text-gray-700 text-sm leading-relaxed">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{service.title}</h3>
-                <p className="text-gray-700 text-sm">{service.description}</p>
+                
+                {/* Hover border glow effect */}
+                <div 
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    boxShadow: `inset 0 0 0 1px ${service.color.replace(')', '/0.3)')}`,
+                  }}
+                />
               </Card>
             ))}
           </div>
