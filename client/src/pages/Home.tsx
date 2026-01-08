@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-react";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 
@@ -18,12 +18,30 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [typewriterText, setTypewriterText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const servicesRef = useRef(null);
   const featuresRef = useRef(null);
   const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
   
   const fullText = "Lab-Tested Peptides At An Affordable Price";
+
+  // Parallax scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate parallax transform
+  const parallaxStyle = useMemo(() => ({
+    transform: `translateY(${scrollY * 0.4}px) scale(1.1)`,
+    transition: 'transform 0.1s ease-out',
+  }), [scrollY]);
 
   // Typewriter effect
   useEffect(() => {
@@ -125,17 +143,19 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
 
-      {/* Video Banner Section */}
+      {/* Video Banner Section with Parallax */}
       <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
-        {/* Video Background */}
+        {/* Video Background with Parallax Effect */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
+          style={parallaxStyle}
         >
-          <source src="/images/hero-video.mp4" type="video/mp4" />
+          <source src="/images/hero-video-hd.mp4" type="video/mp4" />
         </video>
         {/* Dark Overlay for better visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
