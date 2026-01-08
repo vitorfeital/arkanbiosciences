@@ -10,16 +10,54 @@ import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const [typewriterText, setTypewriterText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const servicesRef = useRef(null);
   const featuresRef = useRef(null);
   const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
+  
+  const fullText = "Lab-Tested Peptides At An Affordable Price";
+
+  // Typewriter effect
+  useEffect(() => {
+    const typeSpeed = 80;
+    const deleteSpeed = 40;
+    const pauseBeforeDelete = 3000;
+    const pauseBeforeType = 1000;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        if (typewriterText.length < fullText.length) {
+          setTimeout(() => {
+            setTypewriterText(fullText.slice(0, typewriterText.length + 1));
+          }, typeSpeed);
+        } else {
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseBeforeDelete);
+        }
+      } else {
+        if (typewriterText.length > 0) {
+          setTimeout(() => {
+            setTypewriterText(fullText.slice(0, typewriterText.length - 1));
+          }, deleteSpeed);
+        } else {
+          setTimeout(() => {
+            setIsDeleting(false);
+          }, pauseBeforeType);
+        }
+      }
+    };
+
+    handleTyping();
+  }, [typewriterText, isDeleting]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -104,29 +142,25 @@ export default function Home() {
         
         {/* Logo and Text in bottom left corner */}
         <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex items-center gap-4 md:gap-6">
-          {/* Animated Logo with rotation and glow */}
+          {/* Logo with subtle glow pulse effect */}
           <div className="relative">
             <img 
-              src="/images/logo.png" 
+              src="/images/logo-symbol.png" 
               alt="Tru & Co" 
-              className="w-20 md:w-28 lg:w-36 drop-shadow-2xl animate-[spin_20s_linear_infinite]"
-              style={{
-                filter: 'drop-shadow(0 0 20px rgba(79, 195, 247, 0.6)) drop-shadow(0 0 40px rgba(156, 39, 176, 0.4))',
-              }}
+              className="w-16 md:w-20 lg:w-24 drop-shadow-2xl animate-[subtleGlow_3s_ease-in-out_infinite]"
             />
-            {/* Glow effect behind logo */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-purple-500/30 to-pink-500/30 blur-xl rounded-full animate-pulse" />
           </div>
           
-          {/* Text appearing beside logo */}
-          <div className="overflow-hidden">
+          {/* Typewriter text effect */}
+          <div className="overflow-hidden min-w-[200px] md:min-w-[400px] lg:min-w-[500px]">
             <p 
-              className="text-white text-lg md:text-2xl lg:text-3xl font-bold font-['Sora'] tracking-wide animate-[slideInRight_1.5s_ease-out_forwards]"
+              className="text-white text-lg md:text-2xl lg:text-3xl font-bold font-['Sora'] tracking-wide"
               style={{
-                textShadow: '0 0 20px rgba(79, 195, 247, 0.8), 0 0 40px rgba(156, 39, 176, 0.6), 2px 2px 4px rgba(0,0,0,0.5)',
+                textShadow: '0 0 15px rgba(79, 195, 247, 0.6), 0 0 30px rgba(156, 39, 176, 0.4), 2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
-              Lab-Tested Peptides At An Affordable Price
+              {typewriterText}
+              <span className="animate-[blink_1s_step-end_infinite] ml-1">|</span>
             </p>
           </div>
         </div>

@@ -194,6 +194,22 @@
   animation: gradient-shift 60s ease infinite;
 }
 
+/* Subtle glow animation for logo */
+@keyframes subtleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.4)) drop-shadow(0 0 16px rgba(156, 39, 176, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.7)) drop-shadow(0 0 25px rgba(156, 39, 176, 0.5));
+  }
+}
+
+/* Cursor blink animation for typewriter */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 /* Slide in animation for video banner text */
 @keyframes slideInRight {
   0% {
