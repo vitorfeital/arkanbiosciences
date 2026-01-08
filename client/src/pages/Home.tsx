@@ -2,6 +2,7 @@
  * Home Page - Light Theme with Molecular Background
  * Clean, professional design with dark text on light background
  * Vibrant accent colors from brand (cyan, purple, magenta)
+ * Cascade animations on service cards
  */
 
 import { Button } from "@/components/ui/button";
@@ -9,11 +10,16 @@ import { Card } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "wouter";
+import { motion, useInView } from "framer-motion";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const servicesRef = useRef(null);
+  const featuresRef = useRef(null);
+  const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
+  const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     setIsVisible(true);
@@ -28,6 +34,54 @@ export default function Home() {
       }, 100);
     }
   }, []);
+
+  // Animation variants for cascade effect
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.9,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
+  const featureCardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 40,
+      rotateX: -15,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      rotateX: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 80,
+        damping: 12,
+      },
+    },
+  };
 
   return (
     <div className="min-h-screen">
@@ -66,7 +120,7 @@ export default function Home() {
               Trusted source for pharmaceutical-grade research products. Third-party tested, pre-mixed, and ready for laboratory use.
             </p>
 
-            {/* CTA Button - Only one button now */}
+            {/* CTA Button */}
             <div className={`flex justify-center items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <Link href="/about#company-overview">
                 <Button
@@ -99,12 +153,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with Cascade Animation */}
       <section id="about" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60" />
         
         <div className="container relative z-10">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Why Choose{" "}
               <span className="bg-gradient-to-r from-[oklch(0.50_0.20_200)] to-[oklch(0.50_0.25_340)] bg-clip-text text-transparent">
@@ -114,9 +174,15 @@ export default function Home() {
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
               Proven excellence in every aspect of our work
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            ref={featuresRef}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={featuresInView ? "visible" : "hidden"}
+          >
             {[
               {
                 icon: Sparkles,
@@ -143,48 +209,61 @@ export default function Home() {
                 color: "oklch(0.50_0.25_340)",
               },
             ].map((feature, index) => (
-              <Card
-                key={index}
-                className="glass-card p-8 hover:scale-[1.02] transition-all duration-500 group border-gray-200 overflow-hidden relative"
-              >
-                {/* Background Image */}
-                <div
-                  className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500"
-                  style={{
-                    backgroundImage: `url(${feature.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                />
-                
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-[${feature.color}]/20 to-[${feature.color}]/10 flex items-center justify-center mb-6 ${feature.glowClass} group-hover:scale-110 transition-transform duration-500`}>
-                    <feature.icon size={32} style={{ color: feature.color }} />
+              <motion.div key={index} variants={featureCardVariants}>
+                <Card
+                  className="glass-card p-8 hover:scale-[1.02] transition-all duration-500 group border-gray-200 overflow-hidden relative h-full"
+                >
+                  {/* Background Image */}
+                  <div
+                    className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500"
+                    style={{
+                      backgroundImage: `url(${feature.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  />
+                  
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-[${feature.color}]/20 to-[${feature.color}]/10 flex items-center justify-center mb-6 ${feature.glowClass} group-hover:scale-110 transition-transform duration-500`}>
+                      <feature.icon size={32} style={{ color: feature.color }} />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Services Section - Enhanced with background images and reflective icons */}
+      {/* Services Section with Cascade Animation */}
       <section id="services" className="relative py-32">
         <div className="container">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Our Services
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
               Complete solutions for all your needs
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            ref={servicesRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate={servicesInView ? "visible" : "hidden"}
+          >
             {[
               {
                 icon: Zap,
@@ -235,83 +314,84 @@ export default function Home() {
                 image: "/images/service-customization.jpg",
               },
             ].map((service, index) => (
-              <Card
-                key={index}
-                className="relative overflow-hidden p-6 hover:shadow-xl transition-all duration-500 group border-gray-200/50 bg-white/80 backdrop-blur-sm"
-                style={{
-                  minHeight: '200px',
-                }}
-              >
-                {/* Background Image with Fade Effect */}
-                <div 
-                  className="absolute inset-0 transition-all duration-700 group-hover:scale-110"
+              <motion.div key={index} variants={cardVariants}>
+                <Card
+                  className="relative overflow-hidden p-6 hover:shadow-xl transition-all duration-500 group border-gray-200/50 bg-white/80 backdrop-blur-sm h-full"
                   style={{
-                    backgroundImage: `url(${service.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    opacity: 0.08,
+                    minHeight: '200px',
                   }}
-                />
-                
-                {/* Gradient Overlay for fade effect */}
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-60 group-hover:opacity-80 transition-opacity duration-500`}
-                />
-                
-                {/* Radial fade from center */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-transparent"
-                />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon with Reflective Effect */}
+                >
+                  {/* Background Image with Fade Effect */}
                   <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 relative"
+                    className="absolute inset-0 transition-all duration-700 group-hover:scale-110"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.9) 100%)`,
-                      boxShadow: `0 4px 20px ${service.color.replace('oklch', 'oklch').replace(')', '/0.3)')}, inset 0 1px 0 rgba(255,255,255,0.8)`,
-                      border: '1px solid rgba(255,255,255,0.5)',
+                      backgroundImage: `url(${service.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      opacity: 0.08,
                     }}
-                  >
-                    {/* Reflective shine effect */}
+                  />
+                  
+                  {/* Gradient Overlay for fade effect */}
+                  <div 
+                    className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-60 group-hover:opacity-80 transition-opacity duration-500`}
+                  />
+                  
+                  {/* Radial fade from center */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-transparent"
+                  />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon with Reflective Effect */}
                     <div 
-                      className="absolute inset-0 rounded-xl overflow-hidden"
+                      className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 relative"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 50%, rgba(255,255,255,0.2) 100%)',
+                        background: `linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.9) 100%)`,
+                        boxShadow: `0 4px 20px ${service.color.replace('oklch', 'oklch').replace(')', '/0.3)')}, inset 0 1px 0 rgba(255,255,255,0.8)`,
+                        border: '1px solid rgba(255,255,255,0.5)',
                       }}
-                    />
-                    {/* Icon reflection/glow */}
-                    <div 
-                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-4 rounded-full blur-md opacity-40 group-hover:opacity-60 transition-opacity"
-                      style={{
-                        background: service.color,
-                      }}
-                    />
-                    <service.icon 
-                      size={26} 
-                      style={{ 
-                        color: service.color,
-                        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
-                      }} 
-                      className="relative z-10"
-                    />
+                    >
+                      {/* Reflective shine effect */}
+                      <div 
+                        className="absolute inset-0 rounded-xl overflow-hidden"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 50%, rgba(255,255,255,0.2) 100%)',
+                        }}
+                      />
+                      {/* Icon reflection/glow */}
+                      <div 
+                        className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-4 rounded-full blur-md opacity-40 group-hover:opacity-60 transition-opacity"
+                        style={{
+                          background: service.color,
+                        }}
+                      />
+                      <service.icon 
+                        size={26} 
+                        style={{ 
+                          color: service.color,
+                          filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+                        }} 
+                        className="relative z-10"
+                      />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-2 text-gray-900 drop-shadow-sm">{service.title}</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">{service.description}</p>
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 drop-shadow-sm">{service.title}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">{service.description}</p>
-                </div>
-                
-                {/* Hover border glow effect */}
-                <div 
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    boxShadow: `inset 0 0 0 1px ${service.color.replace(')', '/0.3)')}`,
-                  }}
-                />
-              </Card>
+                  {/* Hover border glow effect */}
+                  <div 
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      boxShadow: `inset 0 0 0 1px ${service.color.replace(')', '/0.3)')}`,
+                    }}
+                  />
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -321,24 +401,31 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/80" />
 
         <div className="container relative z-10">
-          <Card className="glass-card p-12 md:p-16 text-center max-w-4xl mx-auto border-gray-200 glow-cyan">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Ready to get started?
-            </h2>
-            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              Contact us today and discover how we can transform your ideas into reality with our innovative solutions.
-            </p>
-            <div className="flex justify-center">
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
-                >
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
+          >
+            <Card className="glass-card p-12 md:p-16 text-center max-w-4xl mx-auto border-gray-200 glow-cyan">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                Ready to get started?
+              </h2>
+              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                Contact us today and discover how we can transform your ideas into reality with our innovative solutions.
+              </p>
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
