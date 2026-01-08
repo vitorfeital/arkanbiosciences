@@ -16,7 +16,7 @@ export default function Header() {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "World of Peptides", href: "/peptides" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact us", href: "/contact" },
   ];
 
   return (

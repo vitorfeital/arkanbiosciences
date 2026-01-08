@@ -43,9 +43,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
-                  Contact
-                </a>
+                <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  Contact us
+                </Link>
               </li>
             </ul>
           </div>
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Contact</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Contact us</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-gray-600">
                 <Mail size={18} className="mt-0.5 flex-shrink-0 text-[oklch(0.75_0.15_200)]" />
