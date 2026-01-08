@@ -50,20 +50,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Peptides */}
+          {/* Legal */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Research Peptides</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
             <ul className="space-y-3">
-              {["BPC-157", "Ipamorelin", "Tesamorelin", "GHK-Cu"].map((item) => (
-                <li key={item}>
-                  <Link
-                    href="/peptides"
-                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/terms" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <span className="text-gray-500 text-sm">
+                  For Research Use Only
+                </span>
+              </li>
             </ul>
           </div>
 
@@ -84,8 +89,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
+        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
           <p>&copy; {new Date().getFullYear()} Tru & Co. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link href="/terms" className="hover:text-gray-900 transition-colors">
+              Terms
+            </Link>
+            <Link href="/privacy" className="hover:text-gray-900 transition-colors">
+              Privacy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
