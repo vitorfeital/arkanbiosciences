@@ -3,7 +3,8 @@
  * Multi-column footer with glassmorphic styling
  */
 
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
               className="h-10 w-auto"
             />
             <p className="text-gray-600 text-sm leading-relaxed">
-              Transforming ideas into reality through innovative and reliable solutions.
+              Global Health. True Solutions. Transforming research through innovative and reliable peptide solutions.
             </p>
           </div>
 
@@ -26,31 +27,41 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {["Home", "About", "Services", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/peptides" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  World of Peptides
+                </Link>
+              </li>
+              <li>
+                <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Peptides */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Research Peptides</h3>
             <ul className="space-y-3">
-              {["Consulting", "Development", "Support", "Training"].map((item) => (
+              {["BPC-157", "Ipamorelin", "Tesamorelin", "GHK-Cu"].map((item) => (
                 <li key={item}>
-                  <a
-                    href="#services"
+                  <Link
+                    href="/peptides"
                     className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
