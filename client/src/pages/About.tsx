@@ -142,7 +142,7 @@ export default function About() {
         </section>
 
         {/* Company Overview Section */}
-        <section className="py-20 bg-white/50 backdrop-blur-sm">
+        <section id="company-overview" className="py-20 bg-white/50 backdrop-blur-sm scroll-mt-24">
           <div className="container max-w-6xl mx-auto px-4">
             <motion.div 
               className="grid md:grid-cols-2 gap-12 items-center"

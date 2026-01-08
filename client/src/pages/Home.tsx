@@ -10,12 +10,23 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Handle hash navigation for CTA section
+    if (window.location.hash === "#cta-section") {
+      setTimeout(() => {
+        const ctaSection = document.getElementById("cta-section");
+        if (ctaSection) {
+          ctaSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
   }, []);
 
   return (
@@ -55,22 +66,17 @@ export default function Home() {
               Trusted source for pharmaceutical-grade research products. Third-party tested, pre-mixed, and ready for laboratory use.
             </p>
 
-            {/* CTA Buttons */}
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500 group"
-              >
-                What does we do?
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 glass-card border-gray-300 text-gray-800 hover:border-[oklch(0.55_0.18_200)] hover:bg-[oklch(0.55_0.18_200)]/10 transition-all duration-500"
-              >
-                View Certificates
-              </Button>
+            {/* CTA Button - Only one button now */}
+            <div className={`flex justify-center items-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <Link href="/about#company-overview">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500 group"
+                >
+                  What does we do?
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
@@ -233,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="relative py-32 overflow-hidden">
+      <section id="cta-section" className="relative py-32 overflow-hidden">
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/80" />
 
@@ -245,20 +251,15 @@ export default function Home() {
             <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
               Contact us today and discover how we can transform your ideas into reality with our innovative solutions.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
-              >
-                Contact Us
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 glass-card border-gray-300 text-gray-800 hover:border-[oklch(0.55_0.18_200)] hover:bg-[oklch(0.55_0.18_200)]/10 transition-all duration-500"
-              >
-                View Demo
-              </Button>
+            <div className="flex justify-center">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
+                >
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </Card>
         </div>
