@@ -155,7 +155,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
           style={parallaxStyle}
         >
-          <source src="/images/hero-video-peptides.mp4" type="video/mp4" />
+          <source src="/images/hero-video-lab.mp4" type="video/mp4" />
         </video>
         {/* Dark Overlay for better visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
