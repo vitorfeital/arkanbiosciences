@@ -119,7 +119,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <img 
-                src="/images/laboratorio_1.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/fbIOaIKCxFNkZjVM.png" 
                 alt="TRU & CO Laboratory Facility" 
                 className="w-full h-[400px] md:h-[500px] object-cover"
               />

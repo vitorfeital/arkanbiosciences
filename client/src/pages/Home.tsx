@@ -155,7 +155,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-[120%] object-cover will-change-transform"
           style={parallaxStyle}
         >
-          <source src="/images/hero-video-lab.mp4" type="video/mp4" />
+          <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/MrzDAJBQhFrVqOIV.mp4" type="video/mp4" />
         </video>
         {/* Dark Overlay for better visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
@@ -329,7 +329,7 @@ export default function Home() {
                 icon: Sparkles,
                 title: "Continuous Innovation",
                 description: "We leverage the latest technologies and methodologies to deliver cutting-edge solutions that exceed expectations.",
-                image: "/images/feature-innovation.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/hYXFOPBsEnfTBBEI.png",
                 glowClass: "glow-cyan",
                 color: "oklch(0.50_0.20_200)",
               },
@@ -337,7 +337,7 @@ export default function Home() {
                 icon: Award,
                 title: "Premium Quality",
                 description: "Every product undergoes rigorous quality testing, ensuring the highest industry standards are met.",
-                image: "/images/feature-quality.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/IHFaVerJwQDphrYC.png",
                 glowClass: "glow-purple",
                 color: "oklch(0.45_0.22_280)",
               },
@@ -345,7 +345,7 @@ export default function Home() {
                 icon: Shield,
                 title: "Total Trust",
                 description: "International certifications and transparent processes for your complete security and peace of mind.",
-                image: "/images/feature-trust.png",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/HgxcDQSfEnpzKiMH.png",
                 glowClass: "glow-magenta",
                 color: "oklch(0.50_0.25_340)",
               },
