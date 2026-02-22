@@ -11,27 +11,17 @@ import { Link, useLocation } from "wouter";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [, setLocation] = useLocation();
 
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "World of Peptides", href: "/peptides" },
-    { label: "PRC", href: "/calculator" },
     { label: "Contact us", href: "/contact" },
   ];
 
-  const handleGetStartedClick = () => {
-    if (location === "/") {
-      // If on home page, scroll to CTA section
-      const ctaSection = document.getElementById("cta-section");
-      if (ctaSection) {
-        ctaSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // If on another page, navigate to home and then scroll
-      window.location.href = "/#cta-section";
-    }
+  const handlePRCClick = () => {
+    setLocation("/calculator");
     setMobileMenuOpen(false);
   };
 
@@ -62,9 +52,10 @@ export default function Header() {
             <Button
               className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500"
               size="lg"
-              onClick={handleGetStartedClick}
+              style={{ fontWeight: '600' }}
+              onClick={handlePRCClick}
             >
-              Get Started
+              PRC - Peptide Reconstitution Calculator
             </Button>
           </nav>
 
@@ -94,9 +85,10 @@ export default function Header() {
             <Button
               className="w-full bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)]"
               size="lg"
-              onClick={handleGetStartedClick}
+              style={{ fontWeight: '600' }}
+              onClick={handlePRCClick}
             >
-              Get Started
+              PRC - Peptide Reconstitution Calculator
             </Button>
           </nav>
         )}
