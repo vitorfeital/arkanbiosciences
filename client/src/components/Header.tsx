@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calculator } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 
@@ -55,6 +55,7 @@ export default function Header() {
               style={{ fontWeight: '600' }}
               onClick={handlePRCClick}
             >
+              <Calculator className="w-5 h-5 mr-2" />
               PRC - Peptide Reconstitution Calculator
             </Button>
           </nav>
@@ -88,6 +89,7 @@ export default function Header() {
               style={{ fontWeight: '600' }}
               onClick={handlePRCClick}
             >
+              <Calculator className="w-5 h-5 mr-2" />
               PRC - Peptide Reconstitution Calculator
             </Button>
           </nav>
