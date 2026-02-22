@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ExternalLink, FlaskConical, Dna, Microscope, Atom, Brain, Heart,
   Shield, Sparkles, Zap, TrendingUp, Sun, Activity, Layers,
@@ -213,6 +214,7 @@ const categoryBadgeColors: Record<string, string> = {
 };
 
 export default function Peptides() {
+  const { t } = useLanguage();
   const [activeSection, setActiveSection] = useState("All");
   const [activeEvidence, setActiveEvidence] = useState<EvidenceLevel | "All">("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -327,9 +329,9 @@ export default function Peptides() {
               className="text-center mb-8"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#1A365D] mb-4 font-['Sora']">
-                Selected Peptides &{" "}
+                {t("peptides.subtitle").split("&")[0] || "Selected Peptides"} &{" "}
                 <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
-                  Research Context
+                  {t("peptides.subtitle").split("&")[1] || "Research Context"}
                 </span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto mb-8">
@@ -388,7 +390,7 @@ export default function Peptides() {
 
               {/* Results count */}
               <p className="text-sm text-gray-500 mt-4">
-                Showing {filteredPeptides.length} of {allPeptides.length} compounds
+                {t("peptides.showing")} {filteredPeptides.length} {t("peptides.of")} {allPeptides.length} {t("peptides.compounds")}
               </p>
             </motion.div>
 
@@ -471,7 +473,7 @@ export default function Peptides() {
                   onClick={() => { setSearchQuery(""); setActiveSection("All"); setActiveEvidence("All"); }}
                   className="mt-4 text-[oklch(0.5_0.15_200)] hover:underline font-medium cursor-pointer"
                 >
-                  Clear filters
+                  {t("peptides.clearFilters")}
                 </button>
               </div>
             )}

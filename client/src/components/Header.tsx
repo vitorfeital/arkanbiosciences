@@ -1,6 +1,6 @@
 /**
  * Header Component - Luminous Depth Design
- * Glassmorphic navigation bar with logo and menu items
+ * Glassmorphic navigation bar with logo, menu items, and language switcher
  * Sticky positioning with backdrop blur effect
  */
 
@@ -8,16 +8,19 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Calculator } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [, setLocation] = useLocation();
+  const { t } = useLanguage();
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "World of Peptides", href: "/peptides" },
-    { label: "Contact us", href: "/contact" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.about"), href: "/about" },
+    { label: t("nav.peptides"), href: "/peptides" },
+    { label: t("nav.contact"), href: "/contact" },
   ];
 
   const handlePRCClick = () => {
@@ -56,18 +59,22 @@ export default function Header() {
               onClick={handlePRCClick}
             >
               <Calculator className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
-              PRC - Peptide Reconstitution Calculator
+              {t("nav.prc")}
             </Button>
+            <LanguageSwitcher />
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageSwitcher />
+            <button
+              className="p-2 text-gray-700"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -90,7 +97,7 @@ export default function Header() {
               onClick={handlePRCClick}
             >
               <Calculator className="w-5 h-5 mr-2" />
-              PRC - Peptide Reconstitution Calculator
+              {t("nav.prc")}
             </Button>
           </nav>
         )}

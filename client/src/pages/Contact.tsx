@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 declare global {
   interface Window {
@@ -48,6 +49,7 @@ interface FormErrors {
 const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -232,18 +234,18 @@ export default function Contact() {
               className="text-center max-w-3xl mx-auto mb-12"
             >
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.5_0.15_200)] mb-6">
-                Contact us
+                {t("contact.title")}
               </span>
               
               <h1 className="text-4xl md:text-6xl font-bold text-[#1A365D] mb-6 font-['Sora']">
-                Get in{" "}
+                {t("contact.title").split(" ")[0]}{" "}
                 <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
-                  Touch!
+                  {t("contact.title").split(" ").slice(1).join(" ") || "Touch!"}
                 </span>
               </h1>
               
               <p className="text-lg text-gray-600 leading-relaxed">
-                Have questions about our research peptides? We're here to help. Fill out the form below and our team will get back to you as soon as possible.
+                {t("contact.subtitle")}
               </p>
             </motion.div>
           </div>
@@ -267,8 +269,8 @@ export default function Contact() {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4FC3F7] to-[#7B2CBF] flex items-center justify-center mb-4">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">Email Us</h3>
-                  <p className="text-gray-600 text-sm mb-3">We'll respond within 48 hours</p>
+                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">{t("contact.emailLabel")}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{t("contact.responseValue")}</p>
                   <a href="mailto:support@tru-co.com" className="text-[oklch(0.5_0.15_200)] font-medium hover:text-[oklch(0.4_0.18_280)] transition-colors">
                     support@tru-co.com
                   </a>
@@ -279,14 +281,14 @@ export default function Contact() {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#7B2CBF] to-[#E91E8C] flex items-center justify-center mb-4">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">Location</h3>
-                  <p className="text-gray-600 text-sm mb-3">Our headquarters</p>
+                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">{t("contact.locationLabel")}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{t("contact.locationLabel")}</p>
                   <p className="text-gray-700 font-medium">Orlando, FL, USA</p>
                 </div>
 
                 {/* Business Hours Card */}
                 <div className="bg-gradient-to-br from-[#1A365D] to-[#1e3a5f] rounded-2xl p-6 text-white">
-                  <h3 className="text-lg font-bold mb-4 font-['Sora']" style={{color: '#06f9d0'}}>Business Hours</h3>
+                  <h3 className="text-lg font-bold mb-4 font-['Sora']" style={{color: '#06f9d0'}}>{t("contact.hoursLabel")}</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-white/70">Monday - Friday</span>
@@ -444,7 +446,7 @@ export default function Contact() {
                           </span>
                         ) : (
                           <span className="flex items-center justify-center gap-2">
-                            Send Message
+                            {t("contact.send")}
                             <Send className="w-5 h-5" />
                           </span>
                         )}

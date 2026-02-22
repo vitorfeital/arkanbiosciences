@@ -30,6 +30,7 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { peptides, defaultBacWaterOptions, type PeptideData } from "@/data/peptides";
 
 interface CalculationResult {
@@ -70,6 +71,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function CalculatorPage() {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPeptide, setSelectedPeptide] = useState<PeptideData | null>(null);
   const [vialSize, setVialSize] = useState("");
@@ -206,7 +208,7 @@ export default function CalculatorPage() {
               </span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Calculate precise dosing for 100+ peptide compounds. Enter your vial size, BAC water amount, and desired dose to get exact syringe measurements.
+              {t("calc.subtitle")}
             </p>
           </motion.div>
 
@@ -224,7 +226,7 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">1</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">Select Peptide Compound</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.selectPeptide")}</h3>
                   </div>
                   <p className="text-sm text-gray-500 ml-11 mb-3">Choose the peptide compound to calculate.</p>
                   <div className="relative ml-11" ref={dropdownRef}>
@@ -386,7 +388,7 @@ export default function CalculatorPage() {
                     className="flex-1 py-4 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-bold text-lg shadow-lg hover:shadow-xl hover:from-emerald-500 hover:to-teal-600 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <CalcIcon className="w-5 h-5" />
-                    Calculate
+                    {t("calc.calculate")}
                   </button>
                   <button
                     onClick={reset}
@@ -447,11 +449,11 @@ export default function CalculatorPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              {/* How It Works */}
+              {/* {t("calc.howItWorks")} */}
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
                   <CalcIcon className="w-5 h-5 text-emerald-500" />
-                  How It Works
+                  {t("calc.howItWorks")}
                 </h3>
                 <div className="space-y-4">
                   {[
@@ -499,11 +501,11 @@ export default function CalculatorPage() {
                 </div>
               </div>
 
-              {/* Key Formulas */}
+              {/* {t("calc.keyFormulas")} */}
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
                   <Hash className="w-5 h-5 text-emerald-500" />
-                  Key Formulas
+                  {t("calc.keyFormulas")}
                 </h3>
                 <div className="space-y-3">
                   {[

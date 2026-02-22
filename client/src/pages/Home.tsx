@@ -13,8 +13,10 @@ import { ArrowRight, Award, Clock, Shield, Sparkles, Users, Zap } from "lucide-r
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [typewriterText, setTypewriterText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -25,7 +27,7 @@ export default function Home() {
   const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
   
-  const fullText = "Lab-Tested Peptides At An Affordable Price";
+  const fullText = t("home.typewriter");
 
   // Parallax scroll effect
   useEffect(() => {
@@ -238,27 +240,27 @@ export default function Home() {
             {/* Badges */}
             <div className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.55_0.18_200)]/30 text-[oklch(0.35_0.18_200)] glow-cyan">
-                ISO 9001 Certified
+                {t("home.badge1")}
               </span>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.55_0.18_280)]/30 text-[oklch(0.35_0.18_280)] glow-purple">
-                99%+ Satisfaction
+                {t("home.badge2")}
               </span>
               <span className="glass-card px-4 py-2 rounded-full text-sm font-medium border border-[oklch(0.60_0.22_340)]/30 text-[oklch(0.40_0.22_340)] glow-magenta">
-                Global Distribution
+                {t("home.badge3")}
               </span>
             </div>
 
             {/* Main Heading */}
             <h1 className={`text-5xl md:text-7xl font-bold leading-tight transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Global Health.{" "}
+              {t("home.headline")}{" "}
               <span className="bg-gradient-to-r from-[oklch(0.50_0.20_200)] via-[oklch(0.45_0.22_280)] to-[oklch(0.50_0.25_340)] bg-clip-text text-transparent">
-                True Solutions.
+                {t("home.headline2")} {t("home.headline3")}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className={`text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              Trusted source for pharmaceutical-grade research products. Third-party tested, pre-mixed, and ready for laboratory use.
+              {t("home.subheadline")}
             </p>
 
             {/* CTA Button */}
@@ -268,7 +270,7 @@ export default function Home() {
                   size="lg"
                   className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500 group"
                 >
-                  What do we do?
+                  {t("home.exploreBtn")}
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -277,10 +279,10 @@ export default function Home() {
             {/* Stats */}
             <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {[
-                { value: "99%+", label: "Purity Guaranteed" },
-                { value: "24h", label: "Dispatch Time" },
-                { value: "10k+", label: "Orders Shipped" },
-                { value: "4.9/5", label: "Average Rating" },
+                { value: t("home.stat1.value"), label: t("home.stat1.label") },
+                { value: "24h", label: t("home.stat2.label") },
+                { value: "10k+", label: t("home.stat3.label") },
+                { value: "4.9/5", label: t("home.stat4.label") },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[oklch(0.50_0.20_200)] to-[oklch(0.45_0.22_280)] bg-clip-text text-transparent">
@@ -307,13 +309,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Why Choose{" "}
+              {t("home.whyTitle").split("Tru & Co")[0]}
               <span className="bg-gradient-to-r from-[oklch(0.50_0.20_200)] to-[oklch(0.50_0.25_340)] bg-clip-text text-transparent">
                 Tru & Co
               </span>
+              {t("home.whyTitle").split("Tru & Co")[1]}
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              Proven excellence in every aspect of our work
+              {t("home.whySubtitle")}
             </p>
           </motion.div>
 
@@ -327,24 +330,24 @@ export default function Home() {
             {[
               {
                 icon: Sparkles,
-                title: "Continuous Innovation",
-                description: "We leverage the latest technologies and methodologies to deliver cutting-edge solutions that exceed expectations.",
+                title: t("home.why1.title"),
+                description: t("home.why1.desc"),
                 image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/hYXFOPBsEnfTBBEI.png",
                 glowClass: "glow-cyan",
                 color: "oklch(0.50_0.20_200)",
               },
               {
                 icon: Award,
-                title: "Premium Quality",
-                description: "Every product undergoes rigorous quality testing, ensuring the highest industry standards are met.",
+                title: t("home.why2.title"),
+                description: t("home.why2.desc"),
                 image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/IHFaVerJwQDphrYC.png",
                 glowClass: "glow-purple",
                 color: "oklch(0.45_0.22_280)",
               },
               {
                 icon: Shield,
-                title: "Total Trust",
-                description: "International certifications and transparent processes for your complete security and peace of mind.",
+                title: t("home.why3.title"),
+                description: t("home.why3.desc"),
                 image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/HgxcDQSfEnpzKiMH.png",
                 glowClass: "glow-magenta",
                 color: "oklch(0.50_0.25_340)",
@@ -391,10 +394,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Our Services
+              {t("home.whyTitle").includes("?") ? t("home.whyTitle") : "Our Services"}
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              Complete solutions for all your needs
+              {t("home.whySubtitle")}
             </p>
           </motion.div>
 
@@ -550,10 +553,10 @@ export default function Home() {
           >
             <Card className="glass-card p-12 md:p-16 text-center max-w-4xl mx-auto border-gray-200 glow-cyan">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                Ready to get started?
+                {t("home.ctaTitle")}
               </h2>
               <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                Contact us today and discover how we can transform your ideas into reality with our innovative solutions.
+                {t("home.ctaSubtitle")}
               </p>
               <div className="flex justify-center">
                 <Link href="/contact">
@@ -561,7 +564,7 @@ export default function Home() {
                     size="lg"
                     className="text-lg px-8 py-6 bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
                   >
-                    Contact Us
+                    {t("home.ctaContact")}
                   </Button>
                 </Link>
               </div>

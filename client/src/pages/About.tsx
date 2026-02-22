@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -41,6 +42,7 @@ const staggerContainer = {
 };
 
 export default function About() {
+  const { t } = useLanguage();
   const operationalDistinctions = [
     {
       icon: Building2,
@@ -98,16 +100,16 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.45_0.15_200)] mb-6 shadow-sm">
-                About Us
+                {t("about.title").split("Tru & Co")[0] || "About Us"}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a365d] mb-6 font-['Sora']">
-                About{" "}
+                {t("about.title").split("TRU & CO")[0] || "About"}{" "}
                 <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
                   TRU & CO
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                A licensed U.S. business entity focused on the supply of research-use materials with uncompromising quality standards.
+                {t("about.subtitle")}
               </p>
             </motion.div>
 
@@ -153,7 +155,7 @@ export default function About() {
             >
               <motion.div variants={fadeInUp}>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-6 font-['Sora']">
-                  Company Overview
+                  {t("about.missionTitle")}
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
@@ -200,13 +202,13 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-4 font-['Sora']">
-                Manufacturing &{" "}
+                {t("about.valuesTitle").split(" ").slice(0, 1).join(" ")} &{" "}
                 <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
-                  Quality Framework
+                  {t("about.valuesTitle").split(" ").slice(1).join(" ")}
                 </span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Operational distinctions that set us apart
+                {t("about.certSubtitle")}
               </p>
             </motion.div>
 
@@ -276,12 +278,12 @@ export default function About() {
             >
               <motion.div variants={fadeInUp}>
                 <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 mb-6">
-                  Quality Assurance
+                  {t("about.certTitle")}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Sora']">
-                  Quality Control &{" "}
+                  {t("about.visionTitle")} &{" "}
                   <span className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] via-[oklch(0.70_0.20_280)] to-[oklch(0.75_0.20_330)] bg-clip-text text-transparent">
-                    Verification Approach
+                    {t("about.certTitle")}
                   </span>
                 </h2>
                 <div className="space-y-4 text-white/80 leading-relaxed">
