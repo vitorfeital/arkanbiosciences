@@ -3,7 +3,7 @@
  * Multi-column footer with glassmorphic styling
  */
 
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Calculator } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Footer() {
@@ -45,6 +45,12 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                   Contact us
+                </Link>
+              </li>
+              <li>
+                <Link href="/calculator" className="text-gray-600 hover:text-gray-900 transition-colors text-sm flex items-center gap-1.5">
+                  <Calculator size={14} className="text-[oklch(0.75_0.15_200)]" />
+                  PRC - Reconstitution Calculator
                 </Link>
               </li>
             </ul>

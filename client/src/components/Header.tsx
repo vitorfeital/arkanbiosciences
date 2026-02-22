@@ -50,12 +50,12 @@ export default function Header() {
               </a>
             ))}
             <Button
-              className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500"
+              className="group bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500"
               size="lg"
               style={{ fontWeight: '600' }}
               onClick={handlePRCClick}
             >
-              <Calculator className="w-5 h-5 mr-2" />
+              <Calculator className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
               PRC - Peptide Reconstitution Calculator
             </Button>
           </nav>

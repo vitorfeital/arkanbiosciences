@@ -8,7 +8,7 @@
  * - Professional typography: Sora for headings, DM Sans for body
  */
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FlaskConical,
@@ -19,14 +19,17 @@ import {
   RotateCcw,
   Info,
   ChevronDown,
+  ChevronRight,
   AlertTriangle,
   Beaker,
   Target,
   TrendingUp,
   Hash,
+  Home,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Link } from "wouter";
 import { peptides, defaultBacWaterOptions, type PeptideData } from "@/data/peptides";
 
 interface CalculationResult {
@@ -34,6 +37,36 @@ interface CalculationResult {
   volumePerDose: number;
   syringeUnits: number;
   dosesPerVial: number;
+}
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50/50 transition-colors"
+      >
+        <span className="font-semibold text-[#1a365d] pr-4">{question}</span>
+        <ChevronDown className={`w-5 h-5 text-emerald-500 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-4">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default function CalculatorPage() {
@@ -127,8 +160,34 @@ export default function CalculatorPage() {
 
       <Header />
 
-      <main className="relative z-10 pt-32 pb-20">
+      <main className="relative z-10 pt-28 pb-20">
         <div className="container max-w-7xl mx-auto px-4">
+          {/* Breadcrumb */}
+          <motion.nav
+            className="mb-6"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            aria-label="Breadcrumb"
+          >
+            <ol className="flex items-center gap-2 text-sm">
+              <li>
+                <Link href="/" className="flex items-center gap-1 text-gray-500 hover:text-[oklch(0.55_0.18_200)] transition-colors">
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+              </li>
+              <li>
+                <ChevronRight className="w-4 h-4 text-gray-400" />
+              </li>
+              <li>
+                <span className="font-medium text-[#1a365d]">
+                  PRC - Peptide Reconstitution Calculator
+                </span>
+              </li>
+            </ol>
+          </motion.nav>
+
           {/* Page Header */}
           <motion.div
             className="text-center mb-12"
@@ -478,6 +537,59 @@ export default function CalculatorPage() {
               </div>
             </motion.div>
           </div>
+
+          {/* FAQ Section */}
+          <motion.div
+            className="mt-16 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-2 font-['Sora'] text-center">
+              Frequently Asked{" "}
+              <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                Questions
+              </span>
+            </h2>
+            <p className="text-gray-600 text-center mb-10">Common questions about peptide reconstitution and dosing</p>
+            
+            <div className="space-y-4">
+              <FAQItem
+                question="What is peptide reconstitution?"
+                answer="Peptide reconstitution is the process of dissolving lyophilized (freeze-dried) peptide powder into a liquid solution, typically using bacteriostatic water (BAC water). This creates a stable solution that can be accurately measured and dosed for research purposes."
+              />
+              <FAQItem
+                question="What is bacteriostatic water (BAC water)?"
+                answer="Bacteriostatic water is sterile water that contains 0.9% benzyl alcohol as a preservative. This preservative inhibits bacterial growth, making it safe for multiple uses from the same vial. It is the preferred solvent for reconstituting peptides because it extends the shelf life of the reconstituted solution."
+              />
+              <FAQItem
+                question="How do I calculate the correct dose?"
+                answer="First, determine the concentration by dividing the peptide amount (mg) by the volume of BAC water added (mL). Then, divide your desired dose (in mg) by the concentration to get the volume per dose. Multiply by 100 to convert to syringe units (for U-100 insulin syringes). Our calculator automates this entire process."
+              />
+              <FAQItem
+                question="What is a U-100 insulin syringe?"
+                answer="A U-100 insulin syringe has 100 units per 1 mL. This means each unit mark equals 0.01 mL. These syringes are commonly used in peptide research because they allow for precise measurement of small volumes. Our calculator converts all doses to U-100 syringe units for convenience."
+              />
+              <FAQItem
+                question="How should I store reconstituted peptides?"
+                answer="Reconstituted peptides should be stored in a refrigerator at 2-8°C (36-46°F). Avoid freezing reconstituted solutions. Keep the vial upright and away from direct light. Most reconstituted peptides remain stable for 4-6 weeks when stored properly with bacteriostatic water."
+              />
+              <FAQItem
+                question="How much BAC water should I add to my peptide vial?"
+                answer="The amount of BAC water depends on the peptide amount and your desired concentration. Common amounts are 1mL, 2mL, or 3mL. Adding more water creates a lower concentration (easier to measure small doses), while less water creates a higher concentration (fewer injections needed). Use our calculator to find the optimal amount for your research needs."
+              />
+              <FAQItem
+                question="Can I use sterile water instead of BAC water?"
+                answer="While sterile water can be used, bacteriostatic water is strongly recommended. Sterile water lacks preservatives, meaning the reconstituted solution must be used within 24 hours and cannot be stored for multiple uses. BAC water's benzyl alcohol preservative allows for extended storage and multiple withdrawals from the same vial."
+              />
+              <FAQItem
+                question="What does lyophilized mean?"
+                answer="Lyophilization (freeze-drying) is a process that removes water from the peptide while preserving its molecular structure. The result is a stable, dry powder that can be stored at room temperature for extended periods. This process ensures the peptide maintains its integrity until it is reconstituted for use."
+              />
+            </div>
+          </motion.div>
+
         </div>
       </main>
 
