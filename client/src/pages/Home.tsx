@@ -436,7 +436,7 @@ export default function Home() {
                 description: "Guaranteed international quality standards",
                 color: "oklch(0.50_0.20_200)",
                 bgColor: "from-cyan-500/10 to-teal-500/5",
-                image: "/images/service-certification.jpg",
+                image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/tXMtdrQpTvFbuHwR.jpg",
               },
               {
                 icon: Clock,

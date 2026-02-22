@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Docs from "./pages/Docs";
+import Calculator from "./pages/Calculator";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/about"} component={About} />
       <Route path={"/peptides"} component={Peptides} />
+      <Route path={"/calculator"} component={Calculator} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/terms"} component={Terms} />
       <Route path={"/privacy"} component={Privacy} />

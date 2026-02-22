@@ -135,7 +135,7 @@ export default function Terms() {
       <div 
         className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
-          backgroundImage: "url('/images/background.png')",
+          backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed"

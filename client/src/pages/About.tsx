@@ -78,7 +78,7 @@ export default function About() {
       <div 
         className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
-          backgroundImage: "url('/images/background.png')",
+          backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed"
@@ -219,7 +219,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <img 
-                src="/images/laboratorio_2.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/foBxCtOcjZZRrPWn.png" 
                 alt="Quality Control Laboratory" 
                 className="w-full h-[350px] md:h-[450px] object-cover"
               />

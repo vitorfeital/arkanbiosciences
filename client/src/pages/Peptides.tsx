@@ -95,7 +95,7 @@ const peptides = [
 
 export default function Peptides() {
   return (
-    <div className="min-h-screen bg-[url('/images/background.png')] bg-cover bg-fixed bg-center">
+    <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')] bg-cover bg-fixed bg-center">
       <Header />
       
       <main className="pt-20">
