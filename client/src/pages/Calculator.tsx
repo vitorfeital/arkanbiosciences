@@ -477,7 +477,7 @@ export default function CalculatorPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1583912086296-be5b665036d3?w=400&h=300&fit=crop"
+                    src="https://private-us-east-1.manuscdn.com/sessionFile/5KF97Ry4z8Tn65hMbzuItk/sandbox/xR7krRk7qJweEFfAXSo7Hk-img-1_1771802556000_na1fn_cmVzZWFyY2hlci1wZXB0aWRlLXZpYWw.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNUtGOTdSeTR6OFRuNjVoTWJ6dUl0ay9zYW5kYm94L3hSN2tyUms3cUp3ZUVGZkFYU283SGstaW1nLTFfMTc3MTgwMjU1NjAwMF9uYTFmbl9jbVZ6WldGeVkyaGxjaTF3WlhCMGFXUmxMWFpwWVd3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=GFeN4mWFCTgmnpCGME4DvhSEYtQELYY4g0QMuqwEhLO1Owkqema0nz2lZgFaOuNfk9XSVL6QzLgc2jfPh7CQIfTJL8F6LwXbf1OjXHSzYvaeYDNGBARoaLbsogF6ru-fdfeJbCyAOYEqix8Sc8aHmYxgpQWVxUGjnOz0c-pHoIqp-IZn33pVz~4fUP0n~qi49XlHrMJerq0f2GUVvbqO3X9qOFyBSRJesTB8aaXACmOCWgpqV98gWdU3d5GZbuiBEcFhySz50lqyBeQouIFwfIOEnF42XMn5hvH~FTdgC4ph12PrOpFFbXuavcmpTE-dBzfCtnouBRVHu8sWlnvPrg__"
                     alt="Peptide Vial"
                     className="w-full h-32 object-cover"
                   />
@@ -488,7 +488,7 @@ export default function CalculatorPage() {
                 </div>
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400&h=300&fit=crop"
+                    src="https://private-us-east-1.manuscdn.com/sessionFile/5KF97Ry4z8Tn65hMbzuItk/sandbox/xR7krRk7qJweEFfAXSo7Hk-img-2_1771802561000_na1fn_dTEwMC1pbnN1bGluLXN5cmluZ2Vz.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNUtGOTdSeTR6OFRuNjVoTWJ6dUl0ay9zYW5kYm94L3hSN2tyUms3cUp3ZUVGZkFYU283SGstaW1nLTJfMTc3MTgwMjU2MTAwMF9uYTFmbl9kVEV3TUMxcGJuTjFiR2x1TFhONWNtbHVaMlZ6LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=FVgmEYP1o2UZ-VdrDRW9JCoOd8RfhL3rt6VUA7ibG1LjrELpJOpUIoYTFP2iSFVMigvb0tPrMO8VHJ57LnIMBmcG3SQOqlrxRG5IMWrnLOORHc7~44IjZFmWRivmctIGXuGht59CFkE9M5zk-0CAkZA5ytfI1Fai5ZAEVZkA-ydBqM6U-38KwLtzI26frqcZWjaq2DXLgwDHeBqdfZjZblb9mjBuMVd6gpbBsTwNLTOoSCwOORbaXpgbM8v7VjLUfDhRQMTHfZdsXlS3EUVV0VEjOblIneAeRRrc~S-2PZE81rtfbiA~FqgvHkCQouUO10NruFmwH4VsqwGdbzlosA__"
                     alt="U-100 Syringe"
                     className="w-full h-32 object-cover"
                   />
