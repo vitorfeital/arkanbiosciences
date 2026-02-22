@@ -44,7 +44,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 transition-all duration-300 font-medium hover:text-[oklch(0.75_0.15_200)]"
+                className="text-gray-700 hover:text-gray-900 transition-all duration-300 font-medium hover:text-[oklch(0.75_0.15_200)] cursor-pointer hover:scale-110 inline-block"
               >
                 {item.label}
               </a>
@@ -77,7 +77,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="block text-gray-700 hover:text-gray-900 transition-colors py-2"
+                className="block text-gray-700 hover:text-gray-900 transition-all duration-300 py-2 cursor-pointer hover:scale-105 origin-left"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
