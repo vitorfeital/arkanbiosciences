@@ -46,31 +46,31 @@ export default function About() {
   const operationalDistinctions = [
     {
       icon: Building2,
-      text: "Collaboration with FDA-registered manufacturing partners and independent analytical laboratories"
+      text: t("about.op1")
     },
     {
       icon: FlaskConical,
-      text: "Production conducted in facilities operating under GMP-aligned quality systems"
+      text: t("about.op2")
     },
     {
       icon: BadgeCheck,
-      text: "Analytical verification of material purity, typically reported at ≥99%"
+      text: t("about.op3")
     },
     {
       icon: Microscope,
-      text: "Evaluation for sterility and endotoxin presence based on established laboratory methods"
+      text: t("about.op4")
     },
     {
       icon: Clock,
-      text: "Efficient order processing, including same-day fulfillment where applicable"
+      text: t("about.op5")
     },
     {
       icon: Users,
-      text: "U.S.-based customer service for operational and order support"
+      text: t("about.op6")
     },
     {
       icon: CreditCard,
-      text: "Multiple accepted payment methods, including electronic and bank-based options"
+      text: t("about.op7")
     }
   ];
 
@@ -129,13 +129,13 @@ export default function About() {
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex flex-wrap gap-3">
                   <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
-                    WHO/GMP Aligned
+                    {t("about.badge.whoGmp")}
                   </span>
                   <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
-                    ISO 9001:2015 Certified
+                    {t("about.badge.iso9001")}
                   </span>
                   <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
-                    FDA-Registered Partners
+                    {t("about.badge.fdaRegistered")}
                   </span>
                 </div>
               </div>
@@ -159,10 +159,10 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    TRU & CO is a licensed U.S. business entity focused on the supply of research-use materials. The company works exclusively with manufacturers that operate under internationally recognized quality systems, including WHO/GMP alignment and ISO 9001:2015 certification.
+                    {t("about.missionP1")}
                   </p>
                   <p>
-                    All sourcing decisions prioritize documented manufacturing controls, consistency of processes, and adherence to established quality management frameworks. Direct engagement with qualified facilities allows TRU & CO to maintain oversight across the supply chain while offering commercially efficient distribution.
+                    {t("about.missionP2")}
                   </p>
                 </div>
               </motion.div>
@@ -177,13 +177,13 @@ export default function About() {
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[oklch(0.65_0.20_200)] to-[oklch(0.55_0.25_280)] flex items-center justify-center">
                       <Shield className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#1a365d] font-['Sora']">Quality-Driven Operations</h3>
+                    <h3 className="text-xl font-bold text-[#1a365d] font-['Sora']">{t("about.qualityTitle")}</h3>
                   </div>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    TRU & CO provides a structured, secure, and discreet online platform for the distribution of high-purity research peptides. Operational standards emphasize documentation, traceability, and controlled handling at every stage of fulfillment.
+                    {t("about.qualityP1")}
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    Orders are processed promptly within the United States. Customer support is based domestically and available through standard communication channels, including phone and email, to assist with order-related inquiries and logistics.
+                    {t("about.qualityP2")}
                   </p>
                 </div>
               </motion.div>
@@ -229,10 +229,10 @@ export default function About() {
               <div className="absolute inset-0 flex items-center">
                 <div className="p-8 md:p-12 max-w-xl">
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-['Sora']">
-                    Operational Distinctions
+                    {t("about.opDistTitle")}
                   </h3>
                   <p className="text-white/90 leading-relaxed">
-                    Our commitment to excellence is reflected in every aspect of our operations, from manufacturing partnerships to quality verification processes.
+                    {t("about.opDistDesc")}
                   </p>
                 </div>
               </div>
@@ -288,10 +288,10 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-white/80 leading-relaxed">
                   <p>
-                    TRU & CO applies a multi-layered quality verification model that extends beyond basic identity and content analysis. Batches are submitted to independent third-party laboratories for additional evaluation, which may include endotoxin screening and sterility assessments performed by laboratories operating under ISO/IEC 17025:2017 accreditation.
+                    {t("about.qcP1")}
                   </p>
                   <p>
-                    These procedures are intended to support research integrity and reduce the risk of material contamination.
+                    {t("about.qcP2")}
                   </p>
                 </div>
               </motion.div>
@@ -302,32 +302,32 @@ export default function About() {
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[oklch(0.75_0.15_200)] to-[oklch(0.65_0.20_280)] flex items-center justify-center">
                       <FileCheck className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white font-['Sora']">Documentation Standards</h3>
+                    <h3 className="text-xl font-bold text-white font-['Sora']">{t("about.docStdTitle")}</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed mb-6">
-                    Each production lot is accompanied by analytical documentation detailing test parameters and results, including purity, identity, and sterility evaluation where applicable.
+                    {t("about.docStdP1")}
                   </p>
                   <p className="text-white/80 leading-relaxed">
-                    These controls are integral to TRU & CO's quality governance model and reflect the company's emphasis on transparency and procedural rigor.
+                    {t("about.docStdP2")}
                   </p>
                   
                   {/* Quality Badges */}
                   <div className="mt-8 grid grid-cols-2 gap-4">
                     <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
                       <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
-                      <span className="text-white/90 text-sm">≥99% Purity</span>
+                      <span className="text-white/90 text-sm">{t("about.badge.purity")}</span>
                     </div>
                     <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
                       <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
-                      <span className="text-white/90 text-sm">ISO/IEC 17025</span>
+                      <span className="text-white/90 text-sm">{t("about.badge.iso17025")}</span>
                     </div>
                     <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
                       <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
-                      <span className="text-white/90 text-sm">Sterility Tested</span>
+                      <span className="text-white/90 text-sm">{t("about.badge.sterility")}</span>
                     </div>
                     <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
                       <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
-                      <span className="text-white/90 text-sm">Endotoxin Screened</span>
+                      <span className="text-white/90 text-sm">{t("about.badge.endotoxin")}</span>
                     </div>
                   </div>
                 </div>
@@ -348,19 +348,19 @@ export default function About() {
             >
               <div className="flex items-center gap-3 text-gray-600">
                 <Award className="w-8 h-8 text-[oklch(0.55_0.18_200)]" />
-                <span className="font-semibold">WHO/GMP Aligned</span>
+                <span className="font-semibold">{t("about.badge.whoGmp")}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <Shield className="w-8 h-8 text-[oklch(0.55_0.20_280)]" />
-                <span className="font-semibold">ISO 9001:2015</span>
+                <span className="font-semibold">{t("about.badge.iso9001")}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <FlaskConical className="w-8 h-8 text-[oklch(0.60_0.22_330)]" />
-                <span className="font-semibold">ISO/IEC 17025:2017</span>
+                <span className="font-semibold">{t("about.badge.iso17025")}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <Building2 className="w-8 h-8 text-[oklch(0.55_0.18_200)]" />
-                <span className="font-semibold">FDA-Registered</span>
+                <span className="font-semibold">{t("about.badge.fdaRegistered")}</span>
               </div>
             </motion.div>
           </div>

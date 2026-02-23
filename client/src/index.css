@@ -235,3 +235,43 @@
 .animate-glow-pulse {
   animation: glowPulse 3s ease-in-out infinite;
 }
+
+/* PRC Button Shine / Reflection Effect */
+@keyframes prc-shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-15deg);
+  }
+}
+
+.prc-shine-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.prc-shine-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.25) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.25) 60%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  animation: prc-shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.prc-shine-btn:hover .prc-shine-effect {
+  animation-duration: 1.5s;
+}

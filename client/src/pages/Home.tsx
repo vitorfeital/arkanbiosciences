@@ -173,7 +173,7 @@ export default function Home() {
             </div>
             <div className="text-left">
               <p className="text-xs md:text-sm font-bold text-gray-800">GMP</p>
-              <p className="text-[10px] md:text-xs text-gray-600">Certified</p>
+              <p className="text-[10px] md:text-xs text-gray-600">{t("home.badge.certified")}</p>
             </div>
           </div>
           
@@ -186,7 +186,7 @@ export default function Home() {
             </div>
             <div className="text-left">
               <p className="text-xs md:text-sm font-bold text-gray-800">ISO 9001</p>
-              <p className="text-[10px] md:text-xs text-gray-600">Certified</p>
+              <p className="text-[10px] md:text-xs text-gray-600">{t("home.badge.certified")}</p>
             </div>
           </div>
           
@@ -198,8 +198,8 @@ export default function Home() {
               </svg>
             </div>
             <div className="text-left">
-              <p className="text-xs md:text-sm font-bold text-gray-800">3rd Party</p>
-              <p className="text-[10px] md:text-xs text-gray-600">Tested</p>
+              <p className="text-xs md:text-sm font-bold text-gray-800">{t("home.badge.3rdParty")}</p>
+              <p className="text-[10px] md:text-xs text-gray-600">{t("home.badge.tested")}</p>
             </div>
           </div>
         </div>
@@ -394,10 +394,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              {t("home.whyTitle").includes("?") ? t("home.whyTitle") : "Our Services"}
+              {t("home.servicesTitle")}
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              {t("home.whySubtitle")}
+              {t("home.servicesSubtitle")}
             </p>
           </motion.div>
 
@@ -411,48 +411,48 @@ export default function Home() {
             {[
               {
                 icon: Zap,
-                title: "Fast Delivery",
-                description: "24h processing with real-time tracking",
+                title: t("home.service1.title"),
+                description: t("home.service1.desc"),
                 color: "oklch(0.50_0.20_200)",
                 bgColor: "from-cyan-500/10 to-blue-500/5",
                 image: "/images/service-delivery.jpg",
               },
               {
                 icon: Shield,
-                title: "Total Security",
-                description: "Rigorous security and compliance protocols",
+                title: t("home.service2.title"),
+                description: t("home.service2.desc"),
                 color: "oklch(0.45_0.22_280)",
                 bgColor: "from-purple-500/10 to-indigo-500/5",
                 image: "/images/service-security.jpg",
               },
               {
                 icon: Users,
-                title: "Dedicated Support",
-                description: "Specialized team available to assist",
+                title: t("home.service3.title"),
+                description: t("home.service3.desc"),
                 color: "oklch(0.50_0.25_340)",
                 bgColor: "from-pink-500/10 to-rose-500/5",
                 image: "/images/service-support.jpg",
               },
               {
                 icon: Award,
-                title: "Certifications",
-                description: "Guaranteed international quality standards",
+                title: t("home.service4.title"),
+                description: t("home.service4.desc"),
                 color: "oklch(0.50_0.20_200)",
                 bgColor: "from-cyan-500/10 to-teal-500/5",
                 image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/tXMtdrQpTvFbuHwR.jpg",
               },
               {
                 icon: Clock,
-                title: "Availability",
-                description: "Stock always available for immediate delivery",
+                title: t("home.service5.title"),
+                description: t("home.service5.desc"),
                 color: "oklch(0.45_0.22_280)",
                 bgColor: "from-violet-500/10 to-purple-500/5",
                 image: "/images/service-availability.jpg",
               },
               {
                 icon: Sparkles,
-                title: "Customization",
-                description: "Customized solutions for your needs",
+                title: t("home.service6.title"),
+                description: t("home.service6.desc"),
                 color: "oklch(0.50_0.25_340)",
                 bgColor: "from-fuchsia-500/10 to-pink-500/5",
                 image: "/images/service-customization.jpg",

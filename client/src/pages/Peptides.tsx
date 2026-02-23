@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { getTranslatedDescription } from "@/data/peptideTranslations";
 import {
   ExternalLink, FlaskConical, Dna, Microscope, Atom, Brain, Heart,
   Shield, Sparkles, Zap, TrendingUp, Sun, Activity, Layers,
@@ -57,7 +58,6 @@ const allPeptides: PeptideData[] = [
   { name: "SS-31 (Elamipretide)", category: "Mitochondrial", description: "Mitochondria-targeting tetrapeptide investigated in clinical research.", icon: "Microscope", color: "from-[#E91E8C] to-[#7B2CBF]", refs: [{ label: "Szeto & Birk, Annu Rev Pharmacol Toxicol, 2014", url: "https://pubmed.ncbi.nlm.nih.gov/24160793/" }], evidence: "Phase II", section: "Peptides" },
   { name: "Tesamorelin", category: "Growth Hormone", description: "GHRH analogue evaluated in controlled clinical trials for specific medical indications.", icon: "Brain", color: "from-[#4FC3F7] to-[#E91E8C]", refs: [{ label: "Falutz et al., N Engl J Med, 2010", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa0911259" }], evidence: "Phase III / Approved", section: "Therapeutics" },
   { name: "Thymosin Alpha-1", category: "Immune", description: "28-amino-acid peptide studied for immune modulation.", icon: "Shield", color: "from-[#7B2CBF] to-[#4FC3F7]", refs: [{ label: "Romani et al., Expert Opin Biol Ther, 2011", url: "https://pubmed.ncbi.nlm.nih.gov/21235331/" }], evidence: "Clinical/Translational", section: "Peptides" },
-
   // ── A) Peptides (research context) ──
   { name: "TB-500 (Thymosin Beta-4)", category: "Tissue Repair", description: "Thymosin beta-4 is an actin-binding peptide studied in cell migration and repair biology (primarily mechanistic/preclinical).", icon: "Heart", color: "from-[#4FC3F7] to-[#00ACC1]", refs: [{ label: "Nature — cardiac repair signaling study", url: "https://pubmed.ncbi.nlm.nih.gov/15085123/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "TB-500 Fragment 1-4", category: "Fragment", description: "Short sequence reference used in some catalogs; peer-reviewed literature is best tracked via sequence/fragment searches.", icon: "Atom", color: "from-[#7B2CBF] to-[#9C27B0]", refs: [{ label: "Preclinical study", url: "https://pubmed.ncbi.nlm.nih.gov/15256375/" }], evidence: "Preclinical", section: "Peptides" },
@@ -76,7 +76,6 @@ const allPeptides: PeptideData[] = [
   { name: "MOTS-C/Humanin Blend", category: "Blend", description: "Combination listing of mitochondrial peptides; evidence is component-based.", icon: "Layers", color: "from-[#7B2CBF] to-[#E91E8C]", refs: [{ label: "MOTS-C PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-C+mitochondrial+derived+peptide" }, { label: "Humanin PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=humanin+mitochondrial+derived+peptide" }], evidence: "N/A", section: "Blends" },
   { name: "MOTS-C", category: "Mitochondrial", description: "Studied in metabolic adaptation and stress-response signaling (preclinical + emerging human literature).", icon: "Dna", color: "from-[#00ACC1] to-[#4FC3F7]", refs: [{ label: "Cell Metabolism (foundational discovery)", url: "https://pubmed.ncbi.nlm.nih.gov/26073497/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "LL-37", category: "Immune", description: "Endogenous antimicrobial peptide (cathelicidin) studied in innate immune signaling and host defense biology.", icon: "Shield", color: "from-[#E91E8C] to-[#7B2CBF]", refs: [{ label: "Innate immunity review", url: "https://pubmed.ncbi.nlm.nih.gov/16442477/" }], evidence: "Preclinical", section: "Peptides" },
-  { name: "DSIP (Delta Sleep Inducing Peptide)", category: "Neuropeptide", description: "Studied historically in sleep research; evidence is mixed and context-dependent.", icon: "Brain", color: "from-[#4FC3F7] to-[#E91E8C]", refs: [{ label: "Review (Graf 1984)", url: "https://pubmed.ncbi.nlm.nih.gov/6145137/" }, { label: "Update (Graf 1986)", url: "https://pubmed.ncbi.nlm.nih.gov/3550726/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "FOXO4-DRI", category: "Aging Research", description: "Designed to probe FOXO4-p53 interaction pathways in senescence models.", icon: "Microscope", color: "from-[#7B2CBF] to-[#4FC3F7]", refs: [{ label: "Cell (senolytic mechanism study)", url: "https://pubmed.ncbi.nlm.nih.gov/28212060/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "Gonadorelin", category: "Hormone", description: "Synthetic GnRH used as a research/clinical reference compound in endocrine signaling literature.", icon: "Activity", color: "from-[#00ACC1] to-[#7B2CBF]", refs: [{ label: "Review (Lancet)", url: "https://pubmed.ncbi.nlm.nih.gov/19375120/" }], evidence: "Clinical/Translational", section: "Peptides" },
   { name: "GnRH (Triptorelin)", category: "Hormone", description: "GnRH agonist studied in endocrine pharmacology.", icon: "Activity", color: "from-[#4FC3F7] to-[#00ACC1]", refs: [{ label: "Clinical review", url: "https://pubmed.ncbi.nlm.nih.gov/15283728/" }], evidence: "Phase III / Approved", section: "Peptides" },
@@ -93,7 +92,6 @@ const allPeptides: PeptideData[] = [
   { name: "Thymogen", category: "Immune", description: "Bioregulator peptide; verify exact sequence/identity per supplier documentation.", icon: "Shield", color: "from-[#7B2CBF] to-[#9C27B0]", refs: [{ label: "Preclinical study", url: "https://pubmed.ncbi.nlm.nih.gov/2337388/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "Vilon", category: "Peptide", description: "Bioregulator peptide used in research contexts.", icon: "FlaskConical", color: "from-[#E91E8C] to-[#C2185B]", refs: [{ label: "Preclinical study", url: "https://pubmed.ncbi.nlm.nih.gov/12814488/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "Bioregulator Peptides (Vesugen, Vesilute, Livagen, Ovagen, Pancragen, Prostamax, Testagen, Crystagen, Cardiogen, CardioCytogen, Bronchogen, Chonluten, Cartalax, Cortagen, Cortexin)", category: "Peptide", description: "Proprietary/categorized bioregulators; scientific validation and standardization depend on exact peptide composition and publication source.", icon: "FlaskConical", color: "from-[#4FC3F7] to-[#7B2CBF]", refs: [{ label: "Cortexin PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Cortexin+peptide" }, { label: "Cartalax PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Cartalax" }, { label: "Thymalin PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Thymalin+peptide" }], evidence: "N/A", section: "Peptides" },
-
   // ── B) Peptide Therapeutics (GLP-1 / incretin / amylin axis) ──
   { name: "Semaglutide", category: "Therapeutic", description: "GLP-1 receptor agonist extensively studied in randomized clinical trials in metabolic research contexts.", icon: "Zap", color: "from-[#7B2CBF] to-[#E91E8C]", refs: [{ label: "NEJM (Wilding et al., 2021)", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183" }, { label: "More Literature", url: "https://pubmed.ncbi.nlm.nih.gov/?term=semaglutide+trial" }], evidence: "Phase III / Approved", section: "Therapeutics" },
   { name: "Tirzepatide", category: "Therapeutic", description: "Dual GIP/GLP-1 agonist studied in clinical trials for metabolic research.", icon: "Zap", color: "from-[#00ACC1] to-[#4FC3F7]", refs: [{ label: "NEJM (Jastreboff et al., 2022)", url: "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" }, { label: "More Literature", url: "https://pubmed.ncbi.nlm.nih.gov/?term=tirzepatide+trial" }], evidence: "Phase III / Approved", section: "Therapeutics" },
@@ -104,11 +102,9 @@ const allPeptides: PeptideData[] = [
   { name: "Mazdutide", category: "Therapeutic", description: "Incretin/glucagon-axis peptide therapeutic; investigational.", icon: "Zap", color: "from-[#4FC3F7] to-[#00ACC1]", refs: [{ label: "Phase II clinical trial", url: "https://pubmed.ncbi.nlm.nih.gov/37437773/" }], evidence: "Phase II", section: "Therapeutics" },
   { name: "Survodutide", category: "Therapeutic", description: "GLP-1/glucagon axis peptide therapeutic; investigational.", icon: "Zap", color: "from-[#7B2CBF] to-[#9C27B0]", refs: [{ label: "Phase II clinical trial", url: "https://pubmed.ncbi.nlm.nih.gov/37385277/" }], evidence: "Phase II", section: "Therapeutics" },
   { name: "Setmelanotide", category: "Therapeutic", description: "MC4R agonist studied in regulated drug context.", icon: "Zap", color: "from-[#E91E8C] to-[#C2185B]", refs: [{ label: "Lancet Diabetes & Endocrinology", url: "https://www.thelancet.com/journals/landia/article/PIIS2213-8587(20)30364-8/fulltext" }], evidence: "Phase III / Approved", section: "Therapeutics" },
-
   // ── Melanocortin pathway ──
   { name: "Melanotan II", category: "Melanocortin", description: "Melanocortin receptor agonist; discussed in pharmacology and safety literature. Product identity/quality is a frequent concern outside regulated systems.", icon: "Sun", color: "from-[#4FC3F7] to-[#7B2CBF]", refs: [{ label: "Pharmacology discussion & safety", url: "https://pubmed.ncbi.nlm.nih.gov/16815315/" }], evidence: "Clinical/Translational", section: "Peptides" },
   { name: "Melanotan-I (Afamelanotide)", category: "Melanocortin", description: "Melanocortin pathway peptide therapeutic; regulated drug context in some jurisdictions.", icon: "Sun", color: "from-[#7B2CBF] to-[#E91E8C]", refs: [{ label: "Clinical photoprotection study", url: "https://pubmed.ncbi.nlm.nih.gov/25569487/" }], evidence: "Phase III / Approved", section: "Peptides" },
-
   // ── Proteins / Biologics ──
   { name: "HGH 10 IU (Human Growth Hormone)", category: "Protein/Biologic", description: "191-amino-acid protein hormone; 'IU' denotes dosing units in medical products.", icon: "TrendingUp", color: "from-[#00ACC1] to-[#4FC3F7]", refs: [{ label: "Endocrine Society review", url: "https://pubmed.ncbi.nlm.nih.gov/21976742/" }], evidence: "Clinical/Translational", section: "Proteins" },
   { name: "IGF-1 LR3", category: "Protein/Biologic", description: "Protein/peptide growth factor analogue studied in research.", icon: "TrendingUp", color: "from-[#E91E8C] to-[#7B2CBF]", refs: [{ label: "Endocrine Reviews overview", url: "https://pubmed.ncbi.nlm.nih.gov/11294824/" }], evidence: "Clinical/Translational", section: "Proteins" },
@@ -117,15 +113,12 @@ const allPeptides: PeptideData[] = [
   { name: "ACE-031", category: "Protein/Biologic", description: "ActRIIB-Fc fusion protein discussed in myostatin/activin pathway modulation research.", icon: "Microscope", color: "from-[#00ACC1] to-[#7B2CBF]", refs: [{ label: "Phase II clinical trial", url: "https://pubmed.ncbi.nlm.nih.gov/25655393/" }], evidence: "Phase II", section: "Proteins" },
   { name: "Myostatin / GDF-8", category: "Protein/Biologic", description: "Protein growth factor (TGF-β family) studied in muscle biology.", icon: "TrendingUp", color: "from-[#4FC3F7] to-[#00ACC1]", refs: [{ label: "Foundational discovery (Nature)", url: "https://pubmed.ncbi.nlm.nih.gov/9139826/" }], evidence: "Mechanistic", section: "Proteins" },
   { name: "VIP (Vasoactive Intestinal Peptide)", category: "Neuropeptide", description: "Neuropeptide/peptide hormone studied in neuroendocrine research.", icon: "Brain", color: "from-[#7B2CBF] to-[#9C27B0]", refs: [{ label: "Review", url: "https://pubmed.ncbi.nlm.nih.gov/17027741/" }], evidence: "Mechanistic", section: "Proteins" },
-
   // ── Small Molecules ──
   { name: "Dihexa", category: "Small Molecule", description: "AngIV-related small molecule discussed in HGF/c-Met pathway research; literature includes concerns about retractions/quality.", icon: "Beaker", color: "from-[#E91E8C] to-[#C2185B]", refs: [{ label: "HGF/c-Met pathway study", url: "https://pubmed.ncbi.nlm.nih.gov/25649658/" }], evidence: "Preclinical", section: "Small Molecules" },
   { name: "SLU-PP-332", category: "Small Molecule", description: "ERR agonist; small molecule studied in metabolic research.", icon: "Beaker", color: "from-[#4FC3F7] to-[#7B2CBF]", refs: [{ label: "Nature Communications", url: "https://pubmed.ncbi.nlm.nih.gov/37739806/" }], evidence: "Preclinical", section: "Small Molecules" },
   { name: "5-Amino-1MQ", category: "Small Molecule", description: "NNMT inhibitor; small molecule studied in metabolic contexts.", icon: "Beaker", color: "from-[#7B2CBF] to-[#E91E8C]", refs: [{ label: "NNMT inhibition research", url: "https://pubmed.ncbi.nlm.nih.gov/28504763/" }], evidence: "Preclinical", section: "Small Molecules" },
   { name: "MK-677 (Ibutamoren)", category: "Small Molecule", description: "Ghrelin mimetic; small molecule studied in growth hormone secretagogue research.", icon: "Beaker", color: "from-[#00ACC1] to-[#4FC3F7]", refs: [{ label: "Human clinical trial", url: "https://pubmed.ncbi.nlm.nih.gov/18981485/" }], evidence: "Clinical/Translational", section: "Small Molecules" },
   { name: "Tesofensine", category: "Small Molecule", description: "Small molecule studied in metabolic research.", icon: "Beaker", color: "from-[#E91E8C] to-[#7B2CBF]", refs: [{ label: "Phase II obesity trial", url: "https://pubmed.ncbi.nlm.nih.gov/20300078/" }], evidence: "Phase II", section: "Small Molecules" },
-  { name: "Methylene Blue", category: "Small Molecule", description: "Small molecule studied in mitochondrial function research.", icon: "Beaker", color: "from-[#4FC3F7] to-[#E91E8C]", refs: [{ label: "Mitochondrial function review", url: "https://pubmed.ncbi.nlm.nih.gov/23861395/" }], evidence: "Clinical/Translational", section: "Small Molecules" },
-
   // ── Other Peptides / Fragments ──
   { name: "AOD-9604", category: "Fragment", description: "HGH fragment 176-191 derivative studied in metabolic research.", icon: "Atom", color: "from-[#7B2CBF] to-[#4FC3F7]", refs: [{ label: "Human metabolic investigation", url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" }], evidence: "Clinical/Translational", section: "Peptides" },
   { name: "HGH Fragment 176-191", category: "Fragment", description: "Peptide fragment studied in metabolic research.", icon: "Atom", color: "from-[#00ACC1] to-[#7B2CBF]", refs: [{ label: "Human metabolic investigation", url: "https://pubmed.ncbi.nlm.nih.gov/11713213/" }], evidence: "Clinical/Translational", section: "Peptides" },
@@ -137,15 +130,12 @@ const allPeptides: PeptideData[] = [
   { name: "PNC-27 / PNC-28", category: "Peptide", description: "Research peptides studied in p53/HDM-2 interaction literature.", icon: "Microscope", color: "from-[#00ACC1] to-[#4FC3F7]", refs: [{ label: "PNC-27 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=PNC-27+peptide+HDM-2+p53" }, { label: "PNC-28 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=PNC-28+peptide" }], evidence: "Preclinical", section: "Peptides" },
   { name: "P21 (CNTF-derived)", category: "Neuropeptide", description: "Neurotrophic pathway probe derived from CNTF.", icon: "Brain", color: "from-[#E91E8C] to-[#7B2CBF]", refs: [{ label: "Preclinical study", url: "https://pubmed.ncbi.nlm.nih.gov/23459233/" }], evidence: "Preclinical", section: "Peptides" },
   { name: "MIF-1", category: "Neuropeptide", description: "Melanocyte-stimulating hormone release-inhibiting factor; neuroactive peptide.", icon: "Brain", color: "from-[#4FC3F7] to-[#E91E8C]", refs: [{ label: "Review", url: "https://pubmed.ncbi.nlm.nih.gov/6143543/" }], evidence: "Mechanistic", section: "Peptides" },
-
   // ── Coenzymes / Amino Acid Derivatives ──
   { name: "NAD+", category: "Coenzyme", description: "Central redox/metabolic cofactor in energy metabolism literature; clinical outcomes depend on context and are often studied via precursors.", icon: "Atom", color: "from-[#7B2CBF] to-[#4FC3F7]", refs: [{ label: "Science review (Hallmark NAD biology)", url: "https://pubmed.ncbi.nlm.nih.gov/25677505/" }], evidence: "Clinical/Translational", section: "Coenzymes" },
   { name: "L-Carnitine", category: "Coenzyme", description: "Amino acid derivative studied in metabolic research.", icon: "Atom", color: "from-[#00ACC1] to-[#7B2CBF]", refs: [{ label: "Clinical metabolism review", url: "https://pubmed.ncbi.nlm.nih.gov/25620533/" }], evidence: "Clinical/Translational", section: "Coenzymes" },
-
   // ── Laboratory Materials ──
   { name: "Bacteriostatic Water", category: "Lab Material", description: "Sterile water with benzyl alcohol preservative used as a diluent in controlled pharmaceutical/compounding contexts.", icon: "FlaskConical", color: "from-[#4FC3F7] to-[#00ACC1]", refs: [{ label: "USP Compounding Standards", url: "https://www.usp.org/compounding" }], evidence: "N/A", section: "Lab Materials" },
   { name: "Acetic Acid 0.6%", category: "Lab Material", description: "Laboratory reagent used as reconstitution solution for peptide stability.", icon: "FlaskConical", color: "from-[#7B2CBF] to-[#9C27B0]", refs: [{ label: "USP Compounding Standards", url: "https://pubmed.ncbi.nlm.nih.gov/24085449/" }], evidence: "N/A", section: "Lab Materials" },
-
   // ── Blends ──
   { name: "KLOW Blend (KPV/BPC-157/TB-500/GHK)", category: "Blend", description: "Multi-component blend; scientific support is component-based; blend identity/ratio is supplier-defined.", icon: "Layers", color: "from-[#E91E8C] to-[#C2185B]", refs: [{ label: "KPV PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=KPV+tripeptide" }, { label: "BPC-157 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157" }, { label: "TB-500 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta-4" }, { label: "GHK PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=GHK+tripeptide" }], evidence: "N/A", section: "Blends" },
   { name: "GLOW Blend (BPC-157/TB-500/GHK-Cu)", category: "Blend", description: "Multi-component blend; evidence is component-based.", icon: "Layers", color: "from-[#4FC3F7] to-[#7B2CBF]", refs: [{ label: "BPC-157 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157" }, { label: "TB-500 PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta-4" }, { label: "GHK-Cu PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu" }], evidence: "N/A", section: "Blends" },
@@ -155,43 +145,8 @@ const allPeptides: PeptideData[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Section definitions for display                                    */
-/* ------------------------------------------------------------------ */
-const sectionOrder = [
-  { key: "All", label: "All" },
-  { key: "Peptides", label: "Peptides" },
-  { key: "Therapeutics", label: "Therapeutics (GLP-1 / Incretin)" },
-  { key: "Proteins", label: "Proteins & Biologics" },
-  { key: "Small Molecules", label: "Small Molecules" },
-  { key: "Blends", label: "Blends" },
-  { key: "Coenzymes", label: "Coenzymes & Derivatives" },
-  { key: "Lab Materials", label: "Lab Materials" },
-];
-
-/* ------------------------------------------------------------------ */
 /*  Category color badge mapping                                       */
 /* ------------------------------------------------------------------ */
-/* ------------------------------------------------------------------ */
-/*  Evidence level badge mapping                                       */
-/* ------------------------------------------------------------------ */
-const evidenceBadgeColors: Record<EvidenceLevel, { bg: string; text: string; border: string }> = {
-  "Phase III / Approved": { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
-  "Phase II": { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
-  "Clinical/Translational": { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
-  "Preclinical": { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
-  "Mechanistic": { bg: "bg-slate-50", text: "text-slate-600", border: "border-slate-200" },
-  "N/A": { bg: "bg-gray-50", text: "text-gray-500", border: "border-gray-200" },
-};
-
-const evidenceLevels: { key: EvidenceLevel | "All"; label: string }[] = [
-  { key: "All", label: "All Evidence" },
-  { key: "Phase III / Approved", label: "Phase III / Approved" },
-  { key: "Phase II", label: "Phase II" },
-  { key: "Clinical/Translational", label: "Clinical/Translational" },
-  { key: "Preclinical", label: "Preclinical" },
-  { key: "Mechanistic", label: "Mechanistic" },
-];
-
 const categoryBadgeColors: Record<string, string> = {
   "Tissue Repair": "bg-cyan-100 text-cyan-700",
   "Metabolic": "bg-amber-100 text-amber-700",
@@ -213,23 +168,70 @@ const categoryBadgeColors: Record<string, string> = {
   "Lab Material": "bg-zinc-100 text-zinc-600",
 };
 
+/* ------------------------------------------------------------------ */
+/*  Evidence level badge mapping                                       */
+/* ------------------------------------------------------------------ */
+const evidenceBadgeColors: Record<EvidenceLevel, { bg: string; text: string; border: string }> = {
+  "Phase III / Approved": { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
+  "Phase II": { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
+  "Clinical/Translational": { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
+  "Preclinical": { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+  "Mechanistic": { bg: "bg-slate-50", text: "text-slate-600", border: "border-slate-200" },
+  "N/A": { bg: "bg-gray-50", text: "text-gray-500", border: "border-gray-200" },
+};
+
+/* ------------------------------------------------------------------ */
+/*  Evidence level label translation map                               */
+/* ------------------------------------------------------------------ */
+const evidenceLabelMap: Record<string, string> = {
+  "Phase III / Approved": "evidence.phaseIII",
+  "Phase II": "evidence.phaseII",
+  "Clinical/Translational": "evidence.clinical",
+  "Preclinical": "evidence.preclinical",
+  "Mechanistic": "evidence.mechanistic",
+};
+
 export default function Peptides() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = useState("All");
   const [activeEvidence, setActiveEvidence] = useState<EvidenceLevel | "All">("All");
   const [searchQuery, setSearchQuery] = useState("");
+
+  /* Translated section definitions */
+  const sectionOrder = useMemo(() => [
+    { key: "All", label: t("peptides.section.all") },
+    { key: "Peptides", label: t("peptides.section.peptides") },
+    { key: "Therapeutics", label: t("peptides.section.therapeutics") },
+    { key: "Proteins", label: t("peptides.section.proteins") },
+    { key: "Small Molecules", label: t("peptides.section.smallMolecules") },
+    { key: "Blends", label: t("peptides.section.blends") },
+    { key: "Coenzymes", label: t("peptides.section.coenzymes") },
+    { key: "Lab Materials", label: t("peptides.section.labMaterials") },
+  ], [language]);
+
+  /* Translated evidence levels */
+  const evidenceLevels = useMemo(() => [
+    { key: "All" as const, label: t("peptides.evidence.allEvidence") },
+    { key: "Phase III / Approved" as const, label: t("evidence.phaseIII") },
+    { key: "Phase II" as const, label: t("evidence.phaseII") },
+    { key: "Clinical/Translational" as const, label: t("evidence.clinical") },
+    { key: "Preclinical" as const, label: t("evidence.preclinical") },
+    { key: "Mechanistic" as const, label: t("evidence.mechanistic") },
+  ], [language]);
 
   const filteredPeptides = useMemo(() => {
     return allPeptides.filter((p) => {
       const matchesSection = activeSection === "All" || p.section === activeSection;
       const matchesEvidence = activeEvidence === "All" || p.evidence === activeEvidence;
+      const translatedDesc = getTranslatedDescription(p.description, language);
       const matchesSearch = !searchQuery ||
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchQuery.toLowerCase());
+        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        translatedDesc.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesSection && matchesEvidence && matchesSearch;
     });
-  }, [activeSection, activeEvidence, searchQuery]);
+  }, [activeSection, activeEvidence, searchQuery, language]);
 
   return (
     <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')] bg-cover bg-fixed bg-center">
@@ -246,18 +248,18 @@ export default function Peptides() {
               className="text-center max-w-4xl mx-auto"
             >
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.5_0.15_200)] mb-6">
-                Educational Resource
+                {t("peptides.badge")}
               </span>
               
               <h1 className="text-4xl md:text-6xl font-bold text-[#1A365D] mb-6 font-['Sora']">
-                World of{" "}
+                {t("peptides.heroTitle1")}{" "}
                 <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
-                  Peptides
+                  {t("peptides.heroTitle2")}
                 </span>
               </h1>
               
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                High-level, non-promotional, educational information regarding peptides and related bioactive compounds as discussed in peer-reviewed scientific literature.
+                {t("peptides.heroDesc")}
               </p>
             </motion.div>
           </div>
@@ -273,10 +275,8 @@ export default function Peptides() {
               transition={{ duration: 0.6 }}
               className="bg-gradient-to-r from-[#1A365D] to-[#1e3a5f] rounded-2xl p-8 md:p-10 text-white"
             >
-              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Sora']" style={{color: '#83cec1'}}>Purpose and Scope</h2>
-              <p className="text-white/90 leading-relaxed">
-                This document provides high-level, non-promotional, educational information regarding peptides and related bioactive compounds as discussed in peer-reviewed scientific literature. <strong>No statements herein are intended to diagnose, treat, cure, mitigate, or prevent any disease.</strong> Regulatory status, permitted uses, and safety profiles vary by jurisdiction.
-              </p>
+              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Sora']" style={{color: '#83cec1'}}>{t("peptides.purposeTitle")}</h2>
+              <p className="text-white/90 leading-relaxed" dangerouslySetInnerHTML={{ __html: t("peptides.purposeText") }} />
             </motion.div>
           </div>
         </section>
@@ -296,14 +296,14 @@ export default function Peptides() {
                   <Dna className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#1A365D] font-['Sora']">Definition of Peptides</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#1A365D] font-['Sora']">{t("peptides.defTitle")}</h2>
                 </div>
               </div>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Peptides are short chains of amino acids linked by peptide bonds. In biological systems, peptides may function as signaling molecules, hormones, or structural components.
+                {t("peptides.defP1")}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                The World Health Organization (WHO) classifies therapeutic peptides within the broader category of biotherapeutic products, emphasizing standardized nomenclature (INN), quality control, and regulatory evaluation rather than consumer health claims.
+                {t("peptides.defP2")}
               </p>
               <a
                 href="https://www.who.int/teams/health-product-policy-and-standards/standards-and-specifications"
@@ -311,7 +311,7 @@ export default function Peptides() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[oklch(0.5_0.15_200)] hover:text-[oklch(0.4_0.18_280)] transition-colors font-medium"
               >
-                <span>WHO – Biologicals and Biotherapeutic Products</span>
+                <span>{t("peptides.whoLink")}</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </motion.div>
@@ -329,13 +329,10 @@ export default function Peptides() {
               className="text-center mb-8"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#1A365D] mb-4 font-['Sora']">
-                {t("peptides.subtitle").split("&")[0] || "Selected Peptides"} &{" "}
-                <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
-                  {t("peptides.subtitle").split("&")[1] || "Research Context"}
-                </span>
+                {t("peptides.subtitle")}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-                Explore peer-reviewed research on various peptides, proteins, small molecules, and related compounds.
+                {t("peptides.exploreDesc")}
               </p>
 
               {/* Search Bar */}
@@ -344,7 +341,7 @@ export default function Peptides() {
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Search peptides, categories..."
+                    placeholder={t("peptides.searchPlaceholder2")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4FC3F7]/50 focus:border-[#4FC3F7] transition-all"
@@ -399,6 +396,9 @@ export default function Peptides() {
               {filteredPeptides.map((peptide, index) => {
                 const IconComponent = iconMap[peptide.icon] || FlaskConical;
                 const badgeColor = categoryBadgeColors[peptide.category] || "bg-gray-100 text-gray-600";
+                const translatedDescription = getTranslatedDescription(peptide.description, language);
+                const evidenceTranslationKey = evidenceLabelMap[peptide.evidence];
+                const translatedEvidence = evidenceTranslationKey ? t(evidenceTranslationKey) : peptide.evidence;
                 return (
                   <motion.div
                     key={peptide.name}
@@ -424,7 +424,7 @@ export default function Peptides() {
                         <div className="mb-3">
                           <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border ${evidenceBadgeColors[peptide.evidence].bg} ${evidenceBadgeColors[peptide.evidence].text} ${evidenceBadgeColors[peptide.evidence].border}`}>
                             <BadgeCheck className="w-3 h-3" />
-                            {peptide.evidence}
+                            {translatedEvidence}
                           </span>
                         </div>
                       )}
@@ -435,13 +435,13 @@ export default function Peptides() {
                       </h3>
                       
                       <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {peptide.description}
+                        {translatedDescription}
                       </p>
 
                       {/* References */}
                       <div className="pt-4 border-t border-gray-100">
                         <p className="text-xs text-gray-500 mb-2">
-                          {peptide.refs.length > 1 ? "References:" : "Reference:"}
+                          {peptide.refs.length > 1 ? t("peptides.references") : t("peptides.reference")}
                         </p>
                         <div className="space-y-1.5">
                           {peptide.refs.map((ref, refIdx) => (
@@ -468,7 +468,7 @@ export default function Peptides() {
             {filteredPeptides.length === 0 && (
               <div className="text-center py-16">
                 <FlaskConical className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg">No compounds found matching your search.</p>
+                <p className="text-gray-500 text-lg">{t("peptides.noResults2")}</p>
                 <button
                   onClick={() => { setSearchQuery(""); setActiveSection("All"); setActiveEvidence("All"); }}
                   className="mt-4 text-[oklch(0.5_0.15_200)] hover:underline font-medium cursor-pointer"
@@ -496,16 +496,16 @@ export default function Peptides() {
               
               <div className="relative z-10 text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Sora']">
-                  Interested in Research Peptides?
+                  {t("peptides.ctaTitle")}
                 </h2>
                 <p className="text-white/80 text-lg mb-8">
-                  TRU & CO provides high-purity research peptides with comprehensive analytical documentation. All materials are intended for research use only.
+                  {t("peptides.ctaDesc")}
                 </p>
                 <a
                   href="/contact"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#4FC3F7] to-[#7B2CBF] text-white font-semibold rounded-xl hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
                 >
-                  Contact Us
+                  {t("peptides.ctaBtn")}
                 </a>
               </div>
             </motion.div>

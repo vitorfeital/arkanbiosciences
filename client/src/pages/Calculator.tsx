@@ -176,7 +176,7 @@ export default function CalculatorPage() {
               <li>
                 <Link href="/" className="flex items-center gap-1 text-gray-500 hover:text-[oklch(0.55_0.18_200)] transition-colors">
                   <Home className="w-4 h-4" />
-                  Home
+                  {t("calc.breadcrumb.home")}
                 </Link>
               </li>
               <li>
@@ -184,7 +184,7 @@ export default function CalculatorPage() {
               </li>
               <li>
                 <span className="font-medium text-[#1a365d]">
-                  PRC - Peptide Reconstitution Calculator
+                  {t("calc.breadcrumb.prc")}
                 </span>
               </li>
             </ol>
@@ -199,12 +199,12 @@ export default function CalculatorPage() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 mb-6">
               <FlaskConical className="w-4 h-4" />
-              Research Tool
+              {t("calc.researchTool")}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a365d] mb-4 font-['Sora']">
-              Peptide Reconstitution{" "}
+              {t("calc.title1")}{" "}
               <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
-                Calculator
+                {t("calc.title2")}
               </span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -228,12 +228,12 @@ export default function CalculatorPage() {
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">1</div>
                     <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.selectPeptide")}</h3>
                   </div>
-                  <p className="text-sm text-gray-500 ml-11 mb-3">Choose the peptide compound to calculate.</p>
+                  <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step1Desc")}</p>
                   <div className="relative ml-11" ref={dropdownRef}>
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
-                      placeholder="Search Peptides..."
+                      placeholder={t("calc.searchPlaceholder")}
                       value={searchQuery}
                       onChange={(e) => {
                         setSearchQuery(e.target.value);
@@ -288,14 +288,14 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">2</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">Vial Size (mg)</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step2Title")}</h3>
                   </div>
-                  <p className="text-sm text-gray-500 ml-11 mb-3">How much peptide powder is in the vial. Ex: 2mg, 5mg, 10mg.</p>
+                  <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step2Desc")}</p>
                   <div className="relative ml-11">
                     <Beaker className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="number"
-                      placeholder="Enter Vial Size (mg)"
+                      placeholder={t("calc.step2Placeholder")}
                       value={vialSize}
                       onChange={(e) => setVialSize(e.target.value)}
                       className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
@@ -308,9 +308,9 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">3</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">BAC Water (mL)</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step3Title")}</h3>
                   </div>
-                  <p className="text-sm text-gray-500 ml-11 mb-3">How much sterile/BAC water will be added to the vial.</p>
+                  <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step3Desc")}</p>
                   <div className="ml-11 flex gap-2 mb-3">
                     {defaultBacWaterOptions.map((ml) => (
                       <button
@@ -330,7 +330,7 @@ export default function CalculatorPage() {
                     <Droplets className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="number"
-                      placeholder="Enter BAC water amount (mL)"
+                      placeholder={t("calc.step3Placeholder")}
                       value={bacWater}
                       onChange={(e) => setBacWater(e.target.value)}
                       className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
@@ -343,9 +343,9 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">4</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">Desired Dose</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step4Title")}</h3>
                   </div>
-                  <p className="text-sm text-gray-500 ml-11 mb-3">Type an exact (MCG/MG) you want per dose.</p>
+                  <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step4Desc")}</p>
                   <div className="ml-11 flex gap-2 mb-3">
                     <button
                       onClick={() => setDoseUnit("mcg")}
@@ -372,7 +372,7 @@ export default function CalculatorPage() {
                     <Target className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="number"
-                      placeholder="Enter Your Desired Dose"
+                      placeholder={t("calc.step4Placeholder")}
                       value={desiredDose}
                       onChange={(e) => setDesiredDose(e.target.value)}
                       className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
@@ -393,7 +393,7 @@ export default function CalculatorPage() {
                   <button
                     onClick={reset}
                     className="w-14 h-14 rounded-xl border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all"
-                    title="Reset all fields"
+                    title={t("calc.resetTitle")}
                   >
                     <RotateCcw className="w-5 h-5" />
                   </button>
@@ -411,26 +411,26 @@ export default function CalculatorPage() {
                       <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200">
                         <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
                           <TrendingUp className="w-5 h-5 text-emerald-500" />
-                          Calculation Results
+                          {t("calc.resultsTitle")}
                         </h3>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="bg-white rounded-xl p-4 shadow-sm">
-                            <div className="text-sm text-gray-500 mb-1">Concentration</div>
+                            <div className="text-sm text-gray-500 mb-1">{t("calc.concentration")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.concentration}</div>
                             <div className="text-xs text-emerald-600 font-medium">mg/mL</div>
                           </div>
                           <div className="bg-white rounded-xl p-4 shadow-sm">
-                            <div className="text-sm text-gray-500 mb-1">Volume per Dose</div>
+                            <div className="text-sm text-gray-500 mb-1">{t("calc.volumePerDose")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.volumePerDose}</div>
                             <div className="text-xs text-emerald-600 font-medium">mL</div>
                           </div>
                           <div className="bg-white rounded-xl p-4 shadow-sm">
-                            <div className="text-sm text-gray-500 mb-1">Syringe Units</div>
+                            <div className="text-sm text-gray-500 mb-1">{t("calc.syringeUnits")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.syringeUnits}</div>
                             <div className="text-xs text-emerald-600 font-medium">units</div>
                           </div>
                           <div className="bg-white rounded-xl p-4 shadow-sm">
-                            <div className="text-sm text-gray-500 mb-1">Doses per Vial</div>
+                            <div className="text-sm text-gray-500 mb-1">{t("calc.dosesPerVial")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.dosesPerVial}</div>
                             <div className="text-xs text-emerald-600 font-medium">doses</div>
                           </div>
@@ -457,10 +457,10 @@ export default function CalculatorPage() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { step: 1, title: "Select Your Peptide", desc: "Search from 100+ compounds. The calculator will auto-fill common vial sizes." },
-                    { step: 2, title: "Enter Vial & Water", desc: "Specify the peptide amount (mg) in your vial and how much BAC water you'll add." },
-                    { step: 3, title: "Set Your Dose", desc: "Enter your desired dose in MCG or MG per injection." },
-                    { step: 4, title: "Get Results", desc: "See exact syringe units, concentration, volume, and doses per vial." },
+                    { step: 1, title: t("calc.hiw1Title"), desc: t("calc.hiw1Desc") },
+                    { step: 2, title: t("calc.hiw2Title"), desc: t("calc.hiw2Desc") },
+                    { step: 3, title: t("calc.hiw3Title"), desc: t("calc.hiw3Desc") },
+                    { step: 4, title: t("calc.hiw4Title"), desc: t("calc.hiw4Desc") },
                   ].map((item) => (
                     <div key={item.step} className="flex gap-3">
                       <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-sm font-bold flex-shrink-0 mt-0.5">
@@ -484,8 +484,8 @@ export default function CalculatorPage() {
                     className="w-full h-32 object-cover"
                   />
                   <div className="p-3">
-                    <div className="font-semibold text-sm text-[#1a365d]">Peptide Vial</div>
-                    <div className="text-xs text-gray-500">Lyophilized powder</div>
+                    <div className="font-semibold text-sm text-[#1a365d]">{t("calc.peptideVial")}</div>
+                    <div className="text-xs text-gray-500">{t("calc.lyophilized")}</div>
                   </div>
                 </div>
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 overflow-hidden">
@@ -495,8 +495,8 @@ export default function CalculatorPage() {
                     className="w-full h-32 object-cover"
                   />
                   <div className="p-3">
-                    <div className="font-semibold text-sm text-[#1a365d]">U-100 Syringe</div>
-                    <div className="text-xs text-gray-500">1mL = 100 units</div>
+                    <div className="font-semibold text-sm text-[#1a365d]">{t("calc.u100Syringe")}</div>
+                    <div className="text-xs text-gray-500">{t("calc.u100Desc")}</div>
                   </div>
                 </div>
               </div>
@@ -509,10 +509,10 @@ export default function CalculatorPage() {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    { label: "Concentration", formula: "Vial (mg) ÷ BAC Water (mL)", unit: "mg/mL" },
-                    { label: "Volume per Dose", formula: "Dose (mg) ÷ Concentration", unit: "mL" },
-                    { label: "Syringe Units", formula: "Volume (mL) × 100", unit: "units" },
-                    { label: "Doses per Vial", formula: "Vial (mg) ÷ Dose (mg)", unit: "doses" },
+                    { label: t("calc.concentration"), formula: t("calc.formula1"), unit: "mg/mL" },
+                    { label: t("calc.volumePerDose"), formula: t("calc.formula2"), unit: "mL" },
+                    { label: t("calc.syringeUnits"), formula: t("calc.formula3"), unit: t("calc.units") },
+                    { label: t("calc.dosesPerVial"), formula: t("calc.formula4"), unit: t("calc.doses") },
                   ].map((item) => (
                     <div key={item.label} className="flex items-center justify-between py-2.5 border-b border-gray-100 last:border-0">
                       <div>
@@ -530,9 +530,9 @@ export default function CalculatorPage() {
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-amber-800 mb-2">Research Use Only</h4>
+                    <h4 className="font-bold text-amber-800 mb-2">{t("calc.disclaimerTitle")}</h4>
                     <p className="text-sm text-amber-700 leading-relaxed">
-                      This calculator is provided for research and educational purposes only. It is not intended to provide medical advice. Always consult with a qualified healthcare professional before using any peptide compounds. Calculations should be verified independently.
+                      {t("calc.disclaimerText")}
                     </p>
                   </div>
                 </div>
@@ -549,45 +549,45 @@ export default function CalculatorPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-2 font-['Sora'] text-center">
-              Frequently Asked{" "}
+              {t("calc.faqTitle1")}{" "}
               <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
-                Questions
+                {t("calc.faqTitle2")}
               </span>
             </h2>
-            <p className="text-gray-600 text-center mb-10">Common questions about peptide reconstitution and dosing</p>
+            <p className="text-gray-600 text-center mb-10">{t("calc.faqSubtitle")}</p>
             
             <div className="space-y-4">
               <FAQItem
-                question="What is peptide reconstitution?"
-                answer="Peptide reconstitution is the process of dissolving lyophilized (freeze-dried) peptide powder into a liquid solution, typically using bacteriostatic water (BAC water). This creates a stable solution that can be accurately measured and dosed for research purposes."
+                question={t("calc.faq1Q")}
+                answer={t("calc.faq1A")}
               />
               <FAQItem
-                question="What is bacteriostatic water (BAC water)?"
-                answer="Bacteriostatic water is sterile water that contains 0.9% benzyl alcohol as a preservative. This preservative inhibits bacterial growth, making it safe for multiple uses from the same vial. It is the preferred solvent for reconstituting peptides because it extends the shelf life of the reconstituted solution."
+                question={t("calc.faq2Q")}
+                answer={t("calc.faq2A")}
               />
               <FAQItem
-                question="How do I calculate the correct dose?"
-                answer="First, determine the concentration by dividing the peptide amount (mg) by the volume of BAC water added (mL). Then, divide your desired dose (in mg) by the concentration to get the volume per dose. Multiply by 100 to convert to syringe units (for U-100 insulin syringes). Our calculator automates this entire process."
+                question={t("calc.faq3Q")}
+                answer={t("calc.faq3A")}
               />
               <FAQItem
-                question="What is a U-100 insulin syringe?"
-                answer="A U-100 insulin syringe has 100 units per 1 mL. This means each unit mark equals 0.01 mL. These syringes are commonly used in peptide research because they allow for precise measurement of small volumes. Our calculator converts all doses to U-100 syringe units for convenience."
+                question={t("calc.faq4Q")}
+                answer={t("calc.faq4A")}
               />
               <FAQItem
-                question="How should I store reconstituted peptides?"
-                answer="Reconstituted peptides should be stored in a refrigerator at 2-8°C (36-46°F). Avoid freezing reconstituted solutions. Keep the vial upright and away from direct light. Most reconstituted peptides remain stable for 4-6 weeks when stored properly with bacteriostatic water."
+                question={t("calc.faq5Q")}
+                answer={t("calc.faq5A")}
               />
               <FAQItem
-                question="How much BAC water should I add to my peptide vial?"
-                answer="The amount of BAC water depends on the peptide amount and your desired concentration. Common amounts are 1mL, 2mL, or 3mL. Adding more water creates a lower concentration (easier to measure small doses), while less water creates a higher concentration (fewer injections needed). Use our calculator to find the optimal amount for your research needs."
+                question={t("calc.faq6Q")}
+                answer={t("calc.faq6A")}
               />
               <FAQItem
-                question="Can I use sterile water instead of BAC water?"
-                answer="While sterile water can be used, bacteriostatic water is strongly recommended. Sterile water lacks preservatives, meaning the reconstituted solution must be used within 24 hours and cannot be stored for multiple uses. BAC water's benzyl alcohol preservative allows for extended storage and multiple withdrawals from the same vial."
+                question={t("calc.faq7Q")}
+                answer={t("calc.faq7A")}
               />
               <FAQItem
-                question="What does lyophilized mean?"
-                answer="Lyophilization (freeze-drying) is a process that removes water from the peptide while preserving its molecular structure. The result is a stable, dry powder that can be stored at room temperature for extended periods. This process ensures the peptide maintains its integrity until it is reconstituted for use."
+                question={t("calc.faq8Q")}
+                answer={t("calc.faq8A")}
               />
             </div>
           </motion.div>

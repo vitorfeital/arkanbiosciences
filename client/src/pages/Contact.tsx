@@ -123,25 +123,25 @@ export default function Contact() {
     const newErrors: FormErrors = {};
     
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = t("contact.error.firstName");
     }
     
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+      newErrors.lastName = t("contact.error.lastName");
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = "Email address is required";
+      newErrors.email = t("contact.error.emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("contact.error.emailInvalid");
     }
     
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = t("contact.error.message");
     }
     
     if (!recaptchaToken) {
-      newErrors.recaptcha = "Please complete the reCAPTCHA verification";
+      newErrors.recaptcha = t("contact.error.recaptcha");
     }
     
     setErrors(newErrors);
@@ -161,7 +161,7 @@ export default function Contact() {
     e.preventDefault();
     
     if (!validateForm()) {
-      toast.error("Please fill in all required fields");
+      toast.error(t("contact.toast.fillRequired"));
       return;
     }
     
@@ -192,7 +192,7 @@ export default function Contact() {
 
       if (result.success) {
         setIsSubmitted(true);
-        toast.success("Message sent successfully!");
+        toast.success(t("contact.toast.success"));
         
         setTimeout(() => {
           setFormData({
@@ -213,7 +213,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      toast.error("Failed to send message. Please try again.");
+      toast.error(t("contact.toast.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -291,16 +291,16 @@ export default function Contact() {
                   <h3 className="text-lg font-bold mb-4 font-['Sora']" style={{color: '#06f9d0'}}>{t("contact.hoursLabel")}</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-white/70">Monday - Friday</span>
+                      <span className="text-white/70">{t("contact.hours.monFri")}</span>
                       <span>9:00 AM - 6:00 PM EST</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-white/70">Saturday</span>
+                      <span className="text-white/70">{t("contact.hours.sat")}</span>
                       <span>10:00 AM - 2:00 PM EST</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-white/70">Sunday</span>
-                      <span>Closed</span>
+                      <span className="text-white/70">{t("contact.hours.sun")}</span>
+                      <span>{t("contact.hours.closed")}</span>
                     </div>
                   </div>
                 </div>
@@ -324,8 +324,8 @@ export default function Contact() {
                       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#4FC3F7] to-[#7B2CBF] flex items-center justify-center mx-auto mb-6">
                         <CheckCircle2 className="w-10 h-10 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#1A365D] mb-3 font-['Sora']">Message Sent!</h3>
-                      <p className="text-gray-600">Thank you for reaching out. We'll get back to you soon.</p>
+                      <h3 className="text-2xl font-bold text-[#1A365D] mb-3 font-['Sora']">{t("contact.messageSent")}</h3>
+                      <p className="text-gray-600">{t("contact.thankYou")}</p>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -333,7 +333,7 @@ export default function Contact() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                            First Name <span className="text-red-500">*</span>
+                            {t("contact.firstName")} <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"
@@ -342,7 +342,7 @@ export default function Contact() {
                             value={formData.firstName}
                             onChange={handleChange}
                             className={`w-full px-4 py-3 rounded-xl border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50`}
-                            placeholder="John"
+                            placeholder={t("contact.firstNamePlaceholder")}
                           />
                           {errors.firstName && (
                             <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>
@@ -351,7 +351,7 @@ export default function Contact() {
                         
                         <div>
                           <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                            Last Name <span className="text-red-500">*</span>
+                            {t("contact.lastName")} <span className="text-red-500">*</span>
                           </label>
                           <input
                             type="text"
@@ -360,7 +360,7 @@ export default function Contact() {
                             value={formData.lastName}
                             onChange={handleChange}
                             className={`w-full px-4 py-3 rounded-xl border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50`}
-                            placeholder="Doe"
+                            placeholder={t("contact.lastNamePlaceholder")}
                           />
                           {errors.lastName && (
                             <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>
@@ -371,7 +371,7 @@ export default function Contact() {
                       {/* Email Field */}
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                          Email Address <span className="text-red-500">*</span>
+                          {t("contact.emailAddress")} <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="email"
@@ -390,7 +390,7 @@ export default function Contact() {
                       {/* Phone Field */}
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                          Phone Number
+                          {t("contact.phoneNumber")}
                         </label>
                         <input
                           type="tel"
@@ -406,7 +406,7 @@ export default function Contact() {
                       {/* Message Field */}
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                          Your Message <span className="text-red-500">*</span>
+                          {t("contact.yourMessage")} <span className="text-red-500">*</span>
                         </label>
                         <textarea
                           id="message"
@@ -415,7 +415,7 @@ export default function Contact() {
                           onChange={handleChange}
                           rows={5}
                           className={`w-full px-4 py-3 rounded-xl border ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50 resize-none`}
-                          placeholder="How can we help you?"
+                          placeholder={t("contact.messagePlaceholder")}
                         />
                         {errors.message && (
                           <p className="mt-1 text-sm text-red-500">{errors.message}</p>
@@ -442,7 +442,7 @@ export default function Contact() {
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
-                            Sending...
+                            {t("contact.sending")}
                           </span>
                         ) : (
                           <span className="flex items-center justify-center gap-2">

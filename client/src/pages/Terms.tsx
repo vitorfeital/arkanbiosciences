@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import { FileText, Scale, AlertTriangle, Shield, CreditCard, Truck, RefreshCw, Mail } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTermsText } from "@/data/legalTranslations";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -19,113 +21,69 @@ const fadeInUp = {
 };
 
 export default function Terms() {
+  const { language } = useLanguage();
+  const tt = (key: string) => getTermsText(key, language);
+
   const sections = [
     {
       id: "acceptance",
       icon: FileText,
-      title: "1. Acceptance of Terms",
-      content: [
-        "By accessing and using the TRU & CO website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
-        "TRU & CO reserves the right to modify these terms at any time. Continued use of our services after any modifications constitutes acceptance of the updated terms. We encourage you to review these terms periodically."
-      ]
+      title: tt("s1.title"),
+      content: [tt("s1.c1"), tt("s1.c2")]
     },
     {
       id: "eligibility",
       icon: Scale,
-      title: "2. Eligibility and Use Restrictions",
-      content: [
-        "Our products are intended solely for research purposes and are not for human consumption, therapeutic use, or any other unauthorized purpose. By placing an order, you confirm that:",
-        "• You are at least 18 years of age or the age of majority in your jurisdiction",
-        "• You are affiliated with a legitimate research institution, laboratory, or educational facility",
-        "• You will use the products exclusively for lawful research purposes",
-        "• You will comply with all applicable local, state, federal, and international laws and regulations",
-        "TRU & CO reserves the right to refuse service to anyone and to cancel orders at our discretion if we believe products may be misused."
-      ]
+      title: tt("s2.title"),
+      content: [tt("s2.c1"), tt("s2.c2"), tt("s2.c3"), tt("s2.c4"), tt("s2.c5"), tt("s2.c6")]
     },
     {
       id: "products",
       icon: AlertTriangle,
-      title: "3. Product Information and Disclaimers",
-      content: [
-        "All products sold by TRU & CO are research chemicals intended for laboratory use only. Product descriptions, specifications, and documentation are provided for informational purposes.",
-        "DISCLAIMER: Products are NOT intended for human or veterinary use, food additives, drugs, cosmetics, household chemicals, or any other inappropriate applications. TRU & CO makes no claims regarding the safety or efficacy of products for any purpose other than research.",
-        "While we strive to maintain accurate product information, we do not warrant that product descriptions or other content are accurate, complete, reliable, current, or error-free."
-      ]
+      title: tt("s3.title"),
+      content: [tt("s3.c1"), tt("s3.c2"), tt("s3.c3")]
     },
     {
       id: "orders",
       icon: CreditCard,
-      title: "4. Orders and Payment",
-      content: [
-        "All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order for any reason, including but not limited to product availability, errors in pricing or product information, or suspected fraudulent activity.",
-        "Payment must be received in full before orders are processed. We accept various payment methods as indicated on our website. All prices are listed in USD and are subject to change without notice.",
-        "You agree to provide accurate and complete payment information. Any fraudulent, abusive, or illegal activity may result in termination of your account and referral to appropriate authorities."
-      ]
+      title: tt("s4.title"),
+      content: [tt("s4.c1"), tt("s4.c2"), tt("s4.c3")]
     },
     {
       id: "shipping",
       icon: Truck,
-      title: "5. Shipping and Delivery",
-      content: [
-        "TRU & CO ships within the United States. Shipping times and methods vary based on product type and destination. While we strive to process orders promptly, delivery times are estimates and not guaranteed.",
-        "Risk of loss and title for products pass to you upon delivery to the carrier. TRU & CO is not responsible for delays caused by carriers, customs, weather, or other factors beyond our control.",
-        "It is your responsibility to ensure that someone is available to receive the shipment and that the delivery address provided is accurate and complete."
-      ]
+      title: tt("s5.title"),
+      content: [tt("s5.c1"), tt("s5.c2"), tt("s5.c3")]
     },
     {
       id: "returns",
       icon: RefreshCw,
-      title: "6. Returns and Refunds",
-      content: [
-        "Due to the nature of our products and strict quality control requirements, all sales are final. We do not accept returns or provide refunds except in cases of:",
-        "• Damaged products received (must be reported within 48 hours of delivery with photographic evidence)",
-        "• Incorrect products shipped (must be reported within 48 hours of delivery)",
-        "• Products that do not meet stated specifications (subject to verification)",
-        "Any approved refunds will be processed using the original payment method within 10-14 business days. Shipping costs are non-refundable."
-      ]
+      title: tt("s6.title"),
+      content: [tt("s6.c1"), tt("s6.c2"), tt("s6.c3"), tt("s6.c4"), tt("s6.c5")]
     },
     {
       id: "liability",
       icon: Shield,
-      title: "7. Limitation of Liability",
-      content: [
-        "TO THE MAXIMUM EXTENT PERMITTED BY LAW, TRU & CO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, USE, OR OTHER INTANGIBLE LOSSES.",
-        "Our total liability for any claim arising from or related to these terms or our services shall not exceed the amount paid by you for the specific product giving rise to the claim.",
-        "Some jurisdictions do not allow the exclusion or limitation of certain damages, so some of the above limitations may not apply to you."
-      ]
+      title: tt("s7.title"),
+      content: [tt("s7.c1"), tt("s7.c2"), tt("s7.c3")]
     },
     {
       id: "indemnification",
       icon: Scale,
-      title: "8. Indemnification",
-      content: [
-        "You agree to indemnify, defend, and hold harmless TRU & CO, its officers, directors, employees, agents, and affiliates from and against any and all claims, damages, obligations, losses, liabilities, costs, and expenses arising from:",
-        "• Your use of our products or services",
-        "• Your violation of these Terms of Service",
-        "• Your violation of any third-party rights",
-        "• Any misuse of products purchased from TRU & CO"
-      ]
+      title: tt("s8.title"),
+      content: [tt("s8.c1"), tt("s8.c2"), tt("s8.c3"), tt("s8.c4"), tt("s8.c5")]
     },
     {
       id: "governing",
       icon: FileText,
-      title: "9. Governing Law and Dispute Resolution",
-      content: [
-        "These Terms of Service shall be governed by and construed in accordance with the laws of the State of Florida, United States, without regard to its conflict of law provisions.",
-        "Any disputes arising from these terms or your use of our services shall be resolved through binding arbitration in Orlando, Florida, in accordance with the rules of the American Arbitration Association.",
-        "You agree to waive any right to participate in class action lawsuits or class-wide arbitration against TRU & CO."
-      ]
+      title: tt("s9.title"),
+      content: [tt("s9.c1"), tt("s9.c2"), tt("s9.c3")]
     },
     {
       id: "contact",
       icon: Mail,
-      title: "10. Contact Information",
-      content: [
-        "If you have any questions about these Terms of Service, please contact us at:",
-        "Email: support@tru-co.com",
-        "Location: Orlando, FL, United States",
-        "We will respond to inquiries within 48 business hours."
-      ]
+      title: tt("s10.title"),
+      content: [tt("s10.c1"), tt("s10.c2"), tt("s10.c3"), tt("s10.c4")]
     }
   ];
 
@@ -155,16 +113,16 @@ export default function Terms() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.45_0.15_200)] mb-6 shadow-sm">
-                Legal
+                {tt("badge")}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-[#1a365d] mb-4 font-['Sora']">
-                Terms of{" "}
+                {tt("title1")}{" "}
                 <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
-                  Service
+                  {tt("title2")}
                 </span>
               </h1>
               <p className="text-gray-600">
-                Last updated: January 7, 2026
+                {tt("lastUpdated")}
               </p>
             </motion.div>
           </div>
@@ -180,7 +138,7 @@ export default function Terms() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p className="text-gray-700 leading-relaxed">
-                Welcome to TRU & CO. These Terms of Service ("Terms") govern your access to and use of our website, products, and services. Please read these terms carefully before using our services. By accessing or using TRU & CO's services, you agree to be bound by these Terms and our Privacy Policy.
+                {tt("intro")}
               </p>
             </motion.div>
           </div>
@@ -230,10 +188,10 @@ export default function Terms() {
               transition={{ duration: 0.6 }}
             >
               <p className="text-white/90 mb-4">
-                By using TRU & CO's services, you acknowledge that you have read, understood, and agree to these Terms of Service.
+                {tt("footerNote")}
               </p>
               <p className="text-white/70 text-sm">
-                For questions or concerns, please contact us at{" "}
+                {tt("footerContact")}{" "}
                 <a href="mailto:support@tru-co.com" className="text-[oklch(0.75_0.15_200)] hover:underline">
                   support@tru-co.com
                 </a>
