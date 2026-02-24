@@ -1,6 +1,6 @@
-# GoDaddy Deployment Guide for Tru & Co Website
+# GoDaddy Deployment Guide for ARKAN Biosciences Website
 
-This guide explains how to deploy your Tru & Co website to GoDaddy hosting.
+This guide explains how to deploy your ARKAN Biosciences website to GoDaddy hosting.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ This guide explains how to deploy your Tru & Co website to GoDaddy hosting.
 Before uploading to GoDaddy, you need to build the production version:
 
 ```bash
-cd /home/ubuntu/tru-co-website
+cd /home/ubuntu/arkan-biosciences-website
 pnpm install
 pnpm build
 ```
@@ -24,7 +24,7 @@ This will create a `dist/public` folder with all the static files ready for depl
 
 The files you need to upload are located in:
 ```
-/home/ubuntu/tru-co-website/dist/public/
+/home/ubuntu/arkan-biosciences-website/dist/public/
 ```
 
 This folder contains:

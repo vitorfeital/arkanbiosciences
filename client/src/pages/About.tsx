@@ -1,11 +1,11 @@
 /**
- * About Page - Tru & Co
+ * About Page - ARKAN Biosciences
  * 
  * Design Philosophy: Luminous Depth with Light Theme
  * - Clean white/light gray backgrounds with molecular pattern
  * - Glass cards with subtle shadows
  * - Gradient accents (cyan → purple → magenta)
- * - Professional typography: Sora for headings, DM Sans for body
+ * - Professional typography: Outfit for headings, Inter for body
  */
 
 import { motion } from "framer-motion";
@@ -80,7 +80,7 @@ export default function About() {
       <div 
         className="fixed inset-0 opacity-60 pointer-events-none"
         style={{
-          backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')",
+          backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/lhzlmCpYSPZoNsHv.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed"
@@ -99,16 +99,16 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.45_0.15_200)] mb-6 shadow-sm">
-                {t("about.title").split("Tru & Co")[0] || "About Us"}
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#D4AF37]/30 text-[#D4AF37] mb-6 shadow-lg shadow-black/20">
+                {t("about.title").split("ARKAN Biosciences")[0] || "About Us"}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a365d] mb-6 font-['Sora']">
-                {t("about.title").split("TRU & CO")[0] || "About"}{" "}
-                <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
-                  TRU & CO
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-['Outfit']">
+                About{" "}
+                <span className="bg-gradient-to-r from-[#D4AF37] via-[#C0C0C0] to-[#22C55E] bg-clip-text text-transparent">
+                  ARKAN Biosciences
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 {t("about.subtitle")}
               </p>
             </motion.div>
@@ -122,19 +122,19 @@ export default function About() {
             >
               <img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/fbIOaIKCxFNkZjVM.png" 
-                alt="TRU & CO Laboratory Facility" 
+                alt="ARKAN Biosciences Laboratory Facility" 
                 className="w-full h-[400px] md:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a365d]/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex flex-wrap gap-3">
-                  <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
+                  <span className="px-4 py-2 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-full text-sm font-medium text-white">
                     {t("about.badge.whoGmp")}
                   </span>
-                  <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
+                  <span className="px-4 py-2 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-full text-sm font-medium text-white">
                     {t("about.badge.iso9001")}
                   </span>
-                  <span className="px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#1a365d]">
+                  <span className="px-4 py-2 bg-[#0A0A0A]/90 backdrop-blur-sm rounded-full text-sm font-medium text-white">
                     {t("about.badge.fdaRegistered")}
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function About() {
         </section>
 
         {/* Company Overview Section */}
-        <section id="company-overview" className="py-20 bg-white/50 backdrop-blur-sm scroll-mt-24">
+        <section id="company-overview" className="py-20 bg-[#0A0A0A]/50 backdrop-blur-sm scroll-mt-24">
           <div className="container max-w-6xl mx-auto px-4">
             <motion.div 
               className="grid md:grid-cols-2 gap-12 items-center"
@@ -154,10 +154,10 @@ export default function About() {
               viewport={{ once: true }}
             >
               <motion.div variants={fadeInUp}>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-6 font-['Sora']">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Outfit']">
                   {t("about.missionTitle")}
                 </h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
+                <div className="space-y-4 text-gray-400 leading-relaxed">
                   <p>
                     {t("about.missionP1")}
                   </p>
@@ -171,18 +171,18 @@ export default function About() {
                 variants={fadeInUp}
                 className="relative"
               >
-                <div className="absolute -inset-4 bg-gradient-to-r from-[oklch(0.75_0.15_200)]/20 via-[oklch(0.65_0.20_280)]/20 to-[oklch(0.75_0.20_330)]/20 rounded-3xl blur-2xl" />
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-100">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#D4AF37]/20 via-[#C0C0C0]/20 to-[#22C55E]/20 rounded-3xl blur-2xl" />
+                <div className="relative bg-[#0A0A0A]/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/5">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[oklch(0.65_0.20_200)] to-[oklch(0.55_0.25_280)] flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#C0C0C0] flex items-center justify-center">
                       <Shield className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#1a365d] font-['Sora']">{t("about.qualityTitle")}</h3>
+                    <h3 className="text-xl font-bold text-white font-['Outfit']">{t("about.qualityTitle")}</h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-gray-400 leading-relaxed mb-6">
                     {t("about.qualityP1")}
                   </p>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed">
                     {t("about.qualityP2")}
                   </p>
                 </div>
@@ -201,13 +201,13 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-4 font-['Sora']">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-['Outfit']">
                 {t("about.valuesTitle").split(" ").slice(0, 1).join(" ")} &{" "}
-                <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#D4AF37] via-[#C0C0C0] to-[#22C55E] bg-clip-text text-transparent">
                   {t("about.valuesTitle").split(" ").slice(1).join(" ")}
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                 {t("about.certSubtitle")}
               </p>
             </motion.div>
@@ -228,7 +228,7 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d]/80 via-[#1a365d]/50 to-transparent" />
               <div className="absolute inset-0 flex items-center">
                 <div className="p-8 md:p-12 max-w-xl">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-['Sora']">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-['Outfit']">
                     {t("about.opDistTitle")}
                   </h3>
                   <p className="text-white/90 leading-relaxed">
@@ -250,13 +250,13 @@ export default function About() {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="group bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-[#0A0A0A]/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[oklch(0.75_0.15_200)]/20 to-[oklch(0.65_0.20_280)]/20 flex items-center justify-center flex-shrink-0 group-hover:from-[oklch(0.65_0.20_200)] group-hover:to-[oklch(0.55_0.25_280)] transition-all duration-300">
-                      <item.icon className="w-6 h-6 text-[oklch(0.55_0.18_200)] group-hover:text-white transition-colors duration-300" />
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#D4AF37]/20 to-[#C0C0C0]/20 flex items-center justify-center flex-shrink-0 group-hover:from-[#D4AF37] group-hover:to-[#C0C0C0] transition-all duration-300">
+                      <item.icon className="w-6 h-6 text-[#B8860B] group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-sm">
+                    <p className="text-gray-300 leading-relaxed text-sm">
                       {item.text}
                     </p>
                   </div>
@@ -277,12 +277,12 @@ export default function About() {
               viewport={{ once: true }}
             >
               <motion.div variants={fadeInUp}>
-                <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 mb-6">
+                <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[#0A0A0A]/10 backdrop-blur-sm border border-white/20 text-white/90 mb-6">
                   {t("about.certTitle")}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Sora']">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Outfit']">
                   {t("about.visionTitle")} &{" "}
-                  <span className="bg-gradient-to-r from-[oklch(0.75_0.15_200)] via-[oklch(0.70_0.20_280)] to-[oklch(0.75_0.20_330)] bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[#D4AF37] via-[#C0C0C0] to-[#22C55E] bg-clip-text text-transparent">
                     {t("about.certTitle")}
                   </span>
                 </h2>
@@ -297,12 +297,12 @@ export default function About() {
               </motion.div>
 
               <motion.div variants={fadeInUp}>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <div className="bg-[#0A0A0A]/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[oklch(0.75_0.15_200)] to-[oklch(0.65_0.20_280)] flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#C0C0C0] flex items-center justify-center">
                       <FileCheck className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-white font-['Sora']">{t("about.docStdTitle")}</h3>
+                    <h3 className="text-xl font-bold text-white font-['Outfit']">{t("about.docStdTitle")}</h3>
                   </div>
                   <p className="text-white/80 leading-relaxed mb-6">
                     {t("about.docStdP1")}
@@ -313,20 +313,20 @@ export default function About() {
                   
                   {/* Quality Badges */}
                   <div className="mt-8 grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                      <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
+                    <div className="flex items-center gap-3 bg-[#0A0A0A]/5 rounded-lg p-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
                       <span className="text-white/90 text-sm">{t("about.badge.purity")}</span>
                     </div>
-                    <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                      <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
+                    <div className="flex items-center gap-3 bg-[#0A0A0A]/5 rounded-lg p-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
                       <span className="text-white/90 text-sm">{t("about.badge.iso17025")}</span>
                     </div>
-                    <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                      <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
+                    <div className="flex items-center gap-3 bg-[#0A0A0A]/5 rounded-lg p-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
                       <span className="text-white/90 text-sm">{t("about.badge.sterility")}</span>
                     </div>
-                    <div className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                      <CheckCircle2 className="w-5 h-5 text-[oklch(0.75_0.15_200)]" />
+                    <div className="flex items-center gap-3 bg-[#0A0A0A]/5 rounded-lg p-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
                       <span className="text-white/90 text-sm">{t("about.badge.endotoxin")}</span>
                     </div>
                   </div>
@@ -337,7 +337,7 @@ export default function About() {
         </section>
 
         {/* Certifications Banner */}
-        <section className="py-16 bg-white/70 backdrop-blur-sm">
+        <section className="py-16 bg-[#111111]/70 backdrop-blur-sm">
           <div className="container max-w-6xl mx-auto px-4">
             <motion.div 
               className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
@@ -346,20 +346,20 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-3 text-gray-600">
-                <Award className="w-8 h-8 text-[oklch(0.55_0.18_200)]" />
+              <div className="flex items-center gap-3 text-gray-400">
+                <Award className="w-8 h-8 text-[#B8860B]" />
                 <span className="font-semibold">{t("about.badge.whoGmp")}</span>
               </div>
-              <div className="flex items-center gap-3 text-gray-600">
-                <Shield className="w-8 h-8 text-[oklch(0.55_0.20_280)]" />
+              <div className="flex items-center gap-3 text-gray-400">
+                <Shield className="w-8 h-8 text-[#A1A1AA]" />
                 <span className="font-semibold">{t("about.badge.iso9001")}</span>
               </div>
-              <div className="flex items-center gap-3 text-gray-600">
-                <FlaskConical className="w-8 h-8 text-[oklch(0.60_0.22_330)]" />
+              <div className="flex items-center gap-3 text-gray-400">
+                <FlaskConical className="w-8 h-8 text-[#22C55E]" />
                 <span className="font-semibold">{t("about.badge.iso17025")}</span>
               </div>
-              <div className="flex items-center gap-3 text-gray-600">
-                <Building2 className="w-8 h-8 text-[oklch(0.55_0.18_200)]" />
+              <div className="flex items-center gap-3 text-gray-400">
+                <Building2 className="w-8 h-8 text-[#B8860B]" />
                 <span className="font-semibold">{t("about.badge.fdaRegistered")}</span>
               </div>
             </motion.div>

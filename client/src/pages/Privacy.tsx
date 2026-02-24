@@ -1,9 +1,9 @@
 /**
- * Privacy Policy Page - Tru & Co
+ * Privacy Policy Page - ARKAN Biosciences
  * 
  * Design Philosophy: Luminous Depth with Light Theme
  * - Clean white/light gray backgrounds with molecular pattern
- * - Professional typography: Sora for headings, DM Sans for body
+ * - Professional typography: Outfit for headings, Inter for body
  * - Legal document formatting with clear sections
  */
 
@@ -127,16 +127,16 @@ export default function Privacy() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.45_0.15_200)] mb-6 shadow-sm">
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#D4AF37]/30 text-[#D4AF37] mb-6 shadow-lg shadow-black/20">
                 {pt("badge")}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1a365d] mb-4 font-['Sora']">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-['Outfit']">
                 {pt("title1")}{" "}
-                <span className="bg-gradient-to-r from-[oklch(0.65_0.20_200)] via-[oklch(0.55_0.25_280)] to-[oklch(0.65_0.25_330)] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#D4AF37] via-[#C0C0C0] to-[#22C55E] bg-clip-text text-transparent">
                   {pt("title2")}
                 </span>
               </h1>
-              <p className="text-gray-600">
+              <p className="text-gray-400">
                 {pt("lastUpdated")}
               </p>
             </motion.div>
@@ -147,12 +147,12 @@ export default function Privacy() {
         <section className="pb-8">
           <div className="container max-w-4xl mx-auto px-4">
             <motion.div 
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100"
+              className="bg-[#0A0A0A]/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/5"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 {pt("intro")}
               </p>
             </motion.div>
@@ -171,21 +171,21 @@ export default function Privacy() {
                 <motion.div
                   key={section.id}
                   id={section.id}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100"
+                  className="bg-[#0A0A0A]/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/5"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[oklch(0.75_0.15_200)]/20 to-[oklch(0.65_0.20_280)]/20 flex items-center justify-center flex-shrink-0">
-                      <SectionIcon className="w-6 h-6 text-[oklch(0.55_0.18_200)]" />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4AF37]/20 to-[#C0C0C0]/20 flex items-center justify-center flex-shrink-0">
+                      <SectionIcon className="w-6 h-6 text-[#B8860B]" />
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-[#1a365d] font-['Sora']">
+                    <h2 className="text-xl md:text-2xl font-bold text-white font-['Outfit']">
                       {pt(section.titleKey)}
                     </h2>
                   </div>
-                  <div className="space-y-4 text-gray-700 leading-relaxed pl-16">
+                  <div className="space-y-4 text-gray-300 leading-relaxed pl-16">
                     {section.contentKeys.map((key, pIndex) => {
                       const text = pt(key);
                       return text && text !== key ? (
@@ -212,18 +212,18 @@ export default function Privacy() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-[oklch(0.75_0.15_200)]" />
+                <div className="w-16 h-16 rounded-full bg-[#0A0A0A]/10 flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-[#D4AF37]" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 font-['Sora']">{pt("footerTitle")}</h3>
+              <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">{pt("footerTitle")}</h3>
               <p className="text-white/90 mb-4">
                 {pt("footerDesc")}
               </p>
               <p className="text-white/70 text-sm">
                 {pt("footerContact")}{" "}
-                <a href="mailto:support@tru-co.com" className="text-[oklch(0.75_0.15_200)] hover:underline">
-                  support@tru-co.com
+                <a href="mailto:support@arkanbiosciences.com" className="text-[#D4AF37] hover:underline">
+                  support@arkanbiosciences.com
                 </a>
               </p>
             </motion.div>

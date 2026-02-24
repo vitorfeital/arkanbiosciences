@@ -1,7 +1,7 @@
 /**
- * Header Component - Luminous Depth Design
- * Glassmorphic navigation bar with logo, menu items, and language switcher
- * Sticky positioning with backdrop blur effect
+ * Header Component — Obsidian Forge Design
+ * Dark metallic navigation bar with ARKAN Biosciences branding
+ * Silver/gold accents on deep black background
  */
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+
+const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/NZyKMTJiTMAloPmP.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,15 +31,16 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20">
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/">
             <img
-              src="/images/logo.png"
-              alt="Tru & Co"
-              className="h-12 w-auto transition-all duration-500 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(79,195,247,0.5)]"
+              src={LOGO_URL}
+              alt="ARKAN Biosciences"
+              className="h-14 w-auto transition-all duration-500 hover:scale-105"
+              style={{ filter: 'drop-shadow(0 0 12px rgba(192,192,192,0.3))' }}
             />
           </Link>
 
@@ -47,15 +50,14 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 transition-all duration-300 font-medium hover:text-[oklch(0.75_0.15_200)] cursor-pointer hover:scale-110 inline-block"
+                className="text-gray-400 hover:text-white transition-all duration-300 font-medium cursor-pointer hover:scale-110 inline-block relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.label}
               </a>
             ))}
             <Button
-              className="group relative overflow-hidden bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] hover:shadow-[0_0_30px_rgba(79,195,247,0.4)] transition-all duration-500 prc-shine-btn"
+              className="group relative overflow-hidden bg-gradient-to-r from-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500 prc-shine-btn text-black font-semibold"
               size="lg"
-              style={{ fontWeight: '600' }}
               onClick={handlePRCClick}
             >
               <span className="absolute inset-0 prc-shine-effect" />
@@ -69,7 +71,7 @@ export default function Header() {
           <div className="md:hidden flex items-center gap-3">
             <LanguageSwitcher />
             <button
-              className="p-2 text-gray-700"
+              className="p-2 text-gray-400 hover:text-white transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -80,21 +82,20 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-6 space-y-4 border-t border-gray-200">
+          <nav className="md:hidden py-6 space-y-4 border-t border-white/10">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block text-gray-700 hover:text-gray-900 transition-all duration-300 py-2 cursor-pointer hover:scale-105 origin-left"
+                className="block text-gray-400 hover:text-white transition-all duration-300 py-2 cursor-pointer hover:scale-105 origin-left"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
             <Button
-              className="w-full relative overflow-hidden bg-gradient-to-r from-[oklch(0.75_0.15_200)] to-[oklch(0.6_0.18_280)] prc-shine-btn"
+              className="w-full relative overflow-hidden bg-gradient-to-r from-[#D4AF37] to-[#B8860B] prc-shine-btn text-black font-semibold"
               size="lg"
-              style={{ fontWeight: '600' }}
               onClick={handlePRCClick}
             >
               <span className="absolute inset-0 prc-shine-effect" />

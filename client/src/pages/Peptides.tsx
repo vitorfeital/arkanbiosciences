@@ -161,9 +161,9 @@ const categoryBadgeColors: Record<string, string> = {
   "Therapeutic": "bg-violet-100 text-violet-700",
   "Protein/Biologic": "bg-sky-100 text-sky-700",
   "Small Molecule": "bg-lime-100 text-lime-700",
-  "Fragment": "bg-slate-100 text-slate-700",
+  "Fragment": "bg-[#1A1A1A] text-gray-300",
   "Blend": "bg-fuchsia-100 text-fuchsia-700",
-  "Peptide": "bg-gray-100 text-gray-600",
+  "Peptide": "bg-[#1A1A1A] text-gray-400",
   "Coenzyme": "bg-emerald-100 text-emerald-700",
   "Lab Material": "bg-zinc-100 text-zinc-600",
 };
@@ -176,8 +176,8 @@ const evidenceBadgeColors: Record<EvidenceLevel, { bg: string; text: string; bor
   "Phase II": { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
   "Clinical/Translational": { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
   "Preclinical": { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
-  "Mechanistic": { bg: "bg-slate-50", text: "text-slate-600", border: "border-slate-200" },
-  "N/A": { bg: "bg-gray-50", text: "text-gray-500", border: "border-gray-200" },
+  "Mechanistic": { bg: "bg-[#111111]", text: "text-gray-400", border: "border-white/10" },
+  "N/A": { bg: "bg-[#111111]", text: "text-gray-500", border: "border-white/10" },
 };
 
 /* ------------------------------------------------------------------ */
@@ -234,7 +234,7 @@ export default function Peptides() {
   }, [activeSection, activeEvidence, searchQuery, language]);
 
   return (
-    <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')] bg-cover bg-fixed bg-center">
+    <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/xXIktKhsbJmueSDL.jpg')] bg-cover bg-fixed bg-center">
       <Header />
       
       <main className="pt-20">
@@ -247,18 +247,18 @@ export default function Peptides() {
               transition={{ duration: 0.8 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.5_0.15_200)] mb-6">
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#D4AF37]/30 text-[#D4AF37] mb-6">
                 {t("peptides.badge")}
               </span>
               
-              <h1 className="text-4xl md:text-6xl font-bold text-[#1A365D] mb-6 font-['Sora']">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-['Outfit']">
                 {t("peptides.heroTitle1")}{" "}
                 <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
                   {t("peptides.heroTitle2")}
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
                 {t("peptides.heroDesc")}
               </p>
             </motion.div>
@@ -275,7 +275,7 @@ export default function Peptides() {
               transition={{ duration: 0.6 }}
               className="bg-gradient-to-r from-[#1A365D] to-[#1e3a5f] rounded-2xl p-8 md:p-10 text-white"
             >
-              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Sora']" style={{color: '#83cec1'}}>{t("peptides.purposeTitle")}</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-4 font-['Outfit']" style={{color: '#83cec1'}}>{t("peptides.purposeTitle")}</h2>
               <p className="text-white/90 leading-relaxed" dangerouslySetInnerHTML={{ __html: t("peptides.purposeText") }} />
             </motion.div>
           </div>
@@ -289,27 +289,27 @@ export default function Peptides() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 md:p-10 border border-gray-200 shadow-lg"
+              className="bg-[#0A0A0A]/80 backdrop-blur-xl rounded-2xl p-8 md:p-10 border border-white/10 shadow-lg"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#4FC3F7] to-[#7B2CBF] flex items-center justify-center flex-shrink-0">
                   <Dna className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#1A365D] font-['Sora']">{t("peptides.defTitle")}</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white font-['Outfit']">{t("peptides.defTitle")}</h2>
                 </div>
               </div>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-400 leading-relaxed mb-4">
                 {t("peptides.defP1")}
               </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-gray-400 leading-relaxed mb-6">
                 {t("peptides.defP2")}
               </p>
               <a
                 href="https://www.who.int/teams/health-product-policy-and-standards/standards-and-specifications"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[oklch(0.5_0.15_200)] hover:text-[oklch(0.4_0.18_280)] transition-colors font-medium"
+                className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#C0C0C0] transition-colors font-medium"
               >
                 <span>{t("peptides.whoLink")}</span>
                 <ExternalLink className="w-4 h-4" />
@@ -328,10 +328,10 @@ export default function Peptides() {
               transition={{ duration: 0.6 }}
               className="text-center mb-8"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1A365D] mb-4 font-['Sora']">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-['Outfit']">
                 {t("peptides.subtitle")}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+              <p className="text-gray-400 max-w-2xl mx-auto mb-8">
                 {t("peptides.exploreDesc")}
               </p>
 
@@ -344,7 +344,7 @@ export default function Peptides() {
                     placeholder={t("peptides.searchPlaceholder2")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4FC3F7]/50 focus:border-[#4FC3F7] transition-all"
+                    className="w-full pl-12 pr-4 py-3 rounded-xl bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/10 text-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4FC3F7]/50 focus:border-[#4FC3F7] transition-all"
                   />
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function Peptides() {
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                       activeSection === section.key
                         ? "bg-gradient-to-r from-[#4FC3F7] to-[#7B2CBF] text-white shadow-lg"
-                        : "bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-600 hover:bg-white hover:shadow-md hover:scale-105"
+                        : "bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/10 text-gray-400 hover:bg-[#0A0A0A] hover:shadow-md hover:scale-105"
                     }`}
                   >
                     <Filter className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5" />
@@ -376,7 +376,7 @@ export default function Peptides() {
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                       activeEvidence === ev.key
                         ? "bg-gradient-to-r from-[#E91E8C] to-[#7B2CBF] text-white shadow-lg"
-                        : "bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-600 hover:bg-white hover:shadow-md hover:scale-105"
+                        : "bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/10 text-gray-400 hover:bg-[#0A0A0A] hover:shadow-md hover:scale-105"
                     }`}
                   >
                     <BadgeCheck className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5" />
@@ -395,7 +395,7 @@ export default function Peptides() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPeptides.map((peptide, index) => {
                 const IconComponent = iconMap[peptide.icon] || FlaskConical;
-                const badgeColor = categoryBadgeColors[peptide.category] || "bg-gray-100 text-gray-600";
+                const badgeColor = categoryBadgeColors[peptide.category] || "bg-[#1A1A1A] text-gray-400";
                 const translatedDescription = getTranslatedDescription(peptide.description, language);
                 const evidenceTranslationKey = evidenceLabelMap[peptide.evidence];
                 const translatedEvidence = evidenceTranslationKey ? t(evidenceTranslationKey) : peptide.evidence;
@@ -408,7 +408,7 @@ export default function Peptides() {
                     transition={{ duration: 0.5, delay: Math.min(index * 0.05, 0.5) }}
                     className="group"
                   >
-                    <div className="h-full bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div className="h-full bg-[#0A0A0A]/80 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                       {/* Card Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${peptide.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
@@ -430,16 +430,16 @@ export default function Peptides() {
                       )}
 
                       {/* Card Content */}
-                      <h3 className="text-xl font-bold text-[#1A365D] mb-3 font-['Sora'] group-hover:text-[oklch(0.5_0.15_200)] transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-3 font-['Outfit'] group-hover:text-[#D4AF37] transition-colors">
                         {peptide.name}
                       </h3>
                       
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      <p className="text-gray-400 text-sm leading-relaxed mb-4">
                         {translatedDescription}
                       </p>
 
                       {/* References */}
-                      <div className="pt-4 border-t border-gray-100">
+                      <div className="pt-4 border-t border-white/5">
                         <p className="text-xs text-gray-500 mb-2">
                           {peptide.refs.length > 1 ? t("peptides.references") : t("peptides.reference")}
                         </p>
@@ -450,7 +450,7 @@ export default function Peptides() {
                               href={ref.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-sm text-[oklch(0.5_0.15_200)] hover:text-[oklch(0.4_0.18_280)] transition-colors font-medium"
+                              className="flex items-center gap-2 text-sm text-[#D4AF37] hover:text-[#C0C0C0] transition-colors font-medium"
                             >
                               <span className="line-clamp-1">{ref.label}</span>
                               <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
@@ -471,7 +471,7 @@ export default function Peptides() {
                 <p className="text-gray-500 text-lg">{t("peptides.noResults2")}</p>
                 <button
                   onClick={() => { setSearchQuery(""); setActiveSection("All"); setActiveEvidence("All"); }}
-                  className="mt-4 text-[oklch(0.5_0.15_200)] hover:underline font-medium cursor-pointer"
+                  className="mt-4 text-[#D4AF37] hover:underline font-medium cursor-pointer"
                 >
                   {t("peptides.clearFilters")}
                 </button>
@@ -495,7 +495,7 @@ export default function Peptides() {
               <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-[#E91E8C]/20 to-transparent rounded-full blur-3xl" />
               
               <div className="relative z-10 text-center max-w-3xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Sora']">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-['Outfit']">
                   {t("peptides.ctaTitle")}
                 </h2>
                 <p className="text-white/80 text-lg mb-8">
@@ -503,7 +503,7 @@ export default function Peptides() {
                 </p>
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#4FC3F7] to-[#7B2CBF] text-white font-semibold rounded-xl hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#4FC3F7] to-[#7B2CBF] text-white font-semibold rounded-xl hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-500"
                 >
                   {t("peptides.ctaBtn")}
                 </a>

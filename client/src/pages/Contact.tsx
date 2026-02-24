@@ -178,8 +178,8 @@ export default function Contact() {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
-          from_name: "TRU & CO Website",
-          to: "support@tru-co.com",
+          from_name: "ARKAN Biosciences Website",
+          to: "support@arkanbiosciences.com",
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
           phone: formData.phone || "Not provided",
@@ -220,7 +220,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/VvtbnjABXSbXHfiR.png')] bg-cover bg-fixed bg-center">
+    <div className="min-h-screen bg-[url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663028460647/CmifYsiIhLUCvNCJ.jpg')] bg-cover bg-fixed bg-center">
       <Header />
       
       <main className="pt-20">
@@ -233,18 +233,18 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               className="text-center max-w-3xl mx-auto mb-12"
             >
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-white/80 backdrop-blur-sm border border-[oklch(0.75_0.15_200)]/30 text-[oklch(0.5_0.15_200)] mb-6">
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#D4AF37]/30 text-[#D4AF37] mb-6">
                 {t("contact.title")}
               </span>
               
-              <h1 className="text-4xl md:text-6xl font-bold text-[#1A365D] mb-6 font-['Sora']">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-['Outfit']">
                 {t("contact.title").split(" ")[0]}{" "}
                 <span className="bg-gradient-to-r from-[#4FC3F7] via-[#7B2CBF] to-[#E91E8C] bg-clip-text text-transparent">
                   {t("contact.title").split(" ").slice(1).join(" ") || "Touch!"}
                 </span>
               </h1>
               
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-400 leading-relaxed">
                 {t("contact.subtitle")}
               </p>
             </motion.div>
@@ -265,30 +265,30 @@ export default function Contact() {
                 className="space-y-6"
               >
                 {/* Email Card */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-200 shadow-lg">
+                <div className="bg-[#0A0A0A]/80 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-lg">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4FC3F7] to-[#7B2CBF] flex items-center justify-center mb-4">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">{t("contact.emailLabel")}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{t("contact.responseValue")}</p>
-                  <a href="mailto:support@tru-co.com" className="text-[oklch(0.5_0.15_200)] font-medium hover:text-[oklch(0.4_0.18_280)] transition-colors">
-                    support@tru-co.com
+                  <h3 className="text-lg font-bold text-white mb-2 font-['Outfit']">{t("contact.emailLabel")}</h3>
+                  <p className="text-gray-400 text-sm mb-3">{t("contact.responseValue")}</p>
+                  <a href="mailto:support@arkanbiosciences.com" className="text-[#D4AF37] font-medium hover:text-[#C0C0C0] transition-colors">
+                    support@arkanbiosciences.com
                   </a>
                 </div>
 
                 {/* Location Card */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-200 shadow-lg">
+                <div className="bg-[#0A0A0A]/80 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-lg">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#7B2CBF] to-[#E91E8C] flex items-center justify-center mb-4">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-[#1A365D] mb-2 font-['Sora']">{t("contact.locationLabel")}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{t("contact.locationLabel")}</p>
-                  <p className="text-gray-700 font-medium">Orlando, FL, USA</p>
+                  <h3 className="text-lg font-bold text-white mb-2 font-['Outfit']">{t("contact.locationLabel")}</h3>
+                  <p className="text-gray-400 text-sm mb-3">{t("contact.locationLabel")}</p>
+                  <p className="text-gray-300 font-medium">Orlando, FL, USA</p>
                 </div>
 
                 {/* Business Hours Card */}
                 <div className="bg-gradient-to-br from-[#1A365D] to-[#1e3a5f] rounded-2xl p-6 text-white">
-                  <h3 className="text-lg font-bold mb-4 font-['Sora']" style={{color: '#06f9d0'}}>{t("contact.hoursLabel")}</h3>
+                  <h3 className="text-lg font-bold mb-4 font-['Outfit']" style={{color: '#06f9d0'}}>{t("contact.hoursLabel")}</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-white/70">{t("contact.hours.monFri")}</span>
@@ -314,7 +314,7 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="lg:col-span-2"
               >
-                <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-8 md:p-10 border border-gray-200 shadow-xl">
+                <div className="bg-[#0A0A0A]/90 backdrop-blur-xl rounded-2xl p-8 md:p-10 border border-white/10 shadow-xl">
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -324,15 +324,15 @@ export default function Contact() {
                       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#4FC3F7] to-[#7B2CBF] flex items-center justify-center mx-auto mb-6">
                         <CheckCircle2 className="w-10 h-10 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#1A365D] mb-3 font-['Sora']">{t("contact.messageSent")}</h3>
-                      <p className="text-gray-600">{t("contact.thankYou")}</p>
+                      <h3 className="text-2xl font-bold text-white mb-3 font-['Outfit']">{t("contact.messageSent")}</h3>
+                      <p className="text-gray-400">{t("contact.thankYou")}</p>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       {/* Name Fields */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                          <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
                             {t("contact.firstName")} <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -341,7 +341,7 @@ export default function Contact() {
                             name="firstName"
                             value={formData.firstName}
                             onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-xl border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50`}
+                            className={`w-full px-4 py-3 rounded-xl border ${errors.firstName ? 'border-red-500' : 'border-white/15'} focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all bg-[#0A0A0A]/50`}
                             placeholder={t("contact.firstNamePlaceholder")}
                           />
                           {errors.firstName && (
@@ -350,7 +350,7 @@ export default function Contact() {
                         </div>
                         
                         <div>
-                          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                          <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
                             {t("contact.lastName")} <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -359,7 +359,7 @@ export default function Contact() {
                             name="lastName"
                             value={formData.lastName}
                             onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-xl border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50`}
+                            className={`w-full px-4 py-3 rounded-xl border ${errors.lastName ? 'border-red-500' : 'border-white/15'} focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all bg-[#0A0A0A]/50`}
                             placeholder={t("contact.lastNamePlaceholder")}
                           />
                           {errors.lastName && (
@@ -370,7 +370,7 @@ export default function Contact() {
 
                       {/* Email Field */}
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                           {t("contact.emailAddress")} <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -379,7 +379,7 @@ export default function Contact() {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 rounded-xl border ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50`}
+                          className={`w-full px-4 py-3 rounded-xl border ${errors.email ? 'border-red-500' : 'border-white/15'} focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all bg-[#0A0A0A]/50`}
                           placeholder="john.doe@example.com"
                         />
                         {errors.email && (
@@ -389,7 +389,7 @@ export default function Contact() {
 
                       {/* Phone Field */}
                       <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
                           {t("contact.phoneNumber")}
                         </label>
                         <input
@@ -398,14 +398,14 @@ export default function Contact() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50"
+                          className="w-full px-4 py-3 rounded-xl border border-white/15 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all bg-[#0A0A0A]/50"
                           placeholder="+1 (555) 123-4567"
                         />
                       </div>
 
                       {/* Message Field */}
                       <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                           {t("contact.yourMessage")} <span className="text-red-500">*</span>
                         </label>
                         <textarea
@@ -414,7 +414,7 @@ export default function Contact() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={5}
-                          className={`w-full px-4 py-3 rounded-xl border ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.15_200)] focus:border-transparent transition-all bg-white/50 resize-none`}
+                          className={`w-full px-4 py-3 rounded-xl border ${errors.message ? 'border-red-500' : 'border-white/15'} focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all bg-[#0A0A0A]/50 resize-none`}
                           placeholder={t("contact.messagePlaceholder")}
                         />
                         {errors.message && (
@@ -434,7 +434,7 @@ export default function Contact() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-4 text-lg bg-gradient-to-r from-[oklch(0.55_0.18_200)] to-[oklch(0.50_0.20_280)] text-white hover:shadow-[0_8px_30px_rgba(79,195,247,0.4)] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full py-4 text-lg bg-gradient-to-r from-[#B8860B] to-[#A1A1AA] text-white hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center gap-2">

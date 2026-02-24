@@ -5,7 +5,7 @@
  * - Clean white/light gray backgrounds with molecular pattern
  * - Glass cards with subtle shadows
  * - Gradient accents (cyan → purple → magenta)
- * - Professional typography: Sora for headings, DM Sans for body
+ * - Professional typography: Outfit for headings, Inter for body
  */
 
 import { useState, useMemo, useRef, useEffect, useCallback } from "react";
@@ -43,10 +43,10 @@ interface CalculationResult {
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300">
+    <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl shadow-md border border-white/5 overflow-hidden transition-all duration-300">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50/50 transition-colors"
+        className="w-full flex items-center justify-between p-5 text-left hover:bg-[#111111]/50 transition-colors"
       >
         <span className="font-semibold text-[#1a365d] pr-4">{question}</span>
         <ChevronDown className={`w-5 h-5 text-emerald-500 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -60,7 +60,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-4">
+            <div className="px-5 pb-5 text-gray-400 leading-relaxed text-sm border-t border-white/5 pt-4">
               {answer}
             </div>
           </motion.div>
@@ -174,7 +174,7 @@ export default function CalculatorPage() {
           >
             <ol className="flex items-center gap-2 text-sm">
               <li>
-                <Link href="/" className="flex items-center gap-1 text-gray-500 hover:text-[oklch(0.55_0.18_200)] transition-colors">
+                <Link href="/" className="flex items-center gap-1 text-gray-500 hover:text-[#B8860B] transition-colors">
                   <Home className="w-4 h-4" />
                   {t("calc.breadcrumb.home")}
                 </Link>
@@ -201,13 +201,13 @@ export default function CalculatorPage() {
               <FlaskConical className="w-4 h-4" />
               {t("calc.researchTool")}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a365d] mb-4 font-['Sora']">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a365d] mb-4 font-['Outfit']">
               {t("calc.title1")}{" "}
               <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
                 {t("calc.title2")}
               </span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
               {t("calc.subtitle")}
             </p>
           </motion.div>
@@ -221,12 +221,12 @@ export default function CalculatorPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-8">
+              <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/5 p-8">
                 {/* Step 1: Select Peptide */}
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">1</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.selectPeptide")}</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Outfit']">{t("calc.selectPeptide")}</h3>
                   </div>
                   <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step1Desc")}</p>
                   <div className="relative ml-11" ref={dropdownRef}>
@@ -241,7 +241,7 @@ export default function CalculatorPage() {
                         setSelectedPeptide(null);
                       }}
                       onFocus={() => setShowDropdown(true)}
-                      className="w-full pl-12 pr-4 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
+                      className="w-full pl-12 pr-4 py-3.5 rounded-xl border-2 border-dashed border-white/10 focus:border-emerald-400 focus:outline-none transition-colors bg-[#111111]/50 text-gray-200"
                     />
                     <AnimatePresence>
                       {showDropdown && filteredPeptides.length > 0 && (
@@ -249,7 +249,7 @@ export default function CalculatorPage() {
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
-                          className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 max-h-64 overflow-y-auto"
+                          className="absolute z-50 w-full mt-2 bg-[#0A0A0A] rounded-xl shadow-2xl border border-white/5 max-h-64 overflow-y-auto"
                         >
                           {filteredPeptides.map((peptide) => (
                             <button
@@ -257,7 +257,7 @@ export default function CalculatorPage() {
                               onClick={() => selectPeptide(peptide)}
                               className="w-full text-left px-4 py-3 hover:bg-emerald-50 transition-colors border-b border-gray-50 last:border-0"
                             >
-                              <div className="font-medium text-gray-800">{peptide.name}</div>
+                              <div className="font-medium text-gray-200">{peptide.name}</div>
                               <div className="text-xs text-gray-500">{peptide.description}</div>
                             </button>
                           ))}
@@ -274,7 +274,7 @@ export default function CalculatorPage() {
                           className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                             vialSize === size.toString()
                               ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
-                              : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent"
+                              : "bg-[#1A1A1A] text-gray-400 hover:bg-gray-200 border border-transparent"
                           }`}
                         >
                           {size} mg
@@ -288,7 +288,7 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">2</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step2Title")}</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Outfit']">{t("calc.step2Title")}</h3>
                   </div>
                   <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step2Desc")}</p>
                   <div className="relative ml-11">
@@ -298,7 +298,7 @@ export default function CalculatorPage() {
                       placeholder={t("calc.step2Placeholder")}
                       value={vialSize}
                       onChange={(e) => setVialSize(e.target.value)}
-                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
+                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-white/10 focus:border-emerald-400 focus:outline-none transition-colors bg-[#111111]/50 text-gray-200"
                     />
                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">mg</span>
                   </div>
@@ -308,7 +308,7 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">3</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step3Title")}</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Outfit']">{t("calc.step3Title")}</h3>
                   </div>
                   <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step3Desc")}</p>
                   <div className="ml-11 flex gap-2 mb-3">
@@ -319,7 +319,7 @@ export default function CalculatorPage() {
                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                           bacWater === ml.toString()
                             ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent"
+                            : "bg-[#1A1A1A] text-gray-400 hover:bg-gray-200 border border-transparent"
                         }`}
                       >
                         {ml} mL
@@ -333,7 +333,7 @@ export default function CalculatorPage() {
                       placeholder={t("calc.step3Placeholder")}
                       value={bacWater}
                       onChange={(e) => setBacWater(e.target.value)}
-                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
+                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-white/10 focus:border-emerald-400 focus:outline-none transition-colors bg-[#111111]/50 text-gray-200"
                     />
                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">mL</span>
                   </div>
@@ -343,7 +343,7 @@ export default function CalculatorPage() {
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-sm font-bold">4</div>
-                    <h3 className="text-lg font-bold text-[#1a365d] font-['Sora']">{t("calc.step4Title")}</h3>
+                    <h3 className="text-lg font-bold text-[#1a365d] font-['Outfit']">{t("calc.step4Title")}</h3>
                   </div>
                   <p className="text-sm text-gray-500 ml-11 mb-3">{t("calc.step4Desc")}</p>
                   <div className="ml-11 flex gap-2 mb-3">
@@ -352,7 +352,7 @@ export default function CalculatorPage() {
                       className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         doseUnit === "mcg"
                           ? "bg-emerald-500 text-white shadow-lg"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          : "bg-[#1A1A1A] text-gray-400 hover:bg-gray-200"
                       }`}
                     >
                       MCG
@@ -362,7 +362,7 @@ export default function CalculatorPage() {
                       className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         doseUnit === "mg"
                           ? "bg-emerald-500 text-white shadow-lg"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          : "bg-[#1A1A1A] text-gray-400 hover:bg-gray-200"
                       }`}
                     >
                       MG
@@ -375,7 +375,7 @@ export default function CalculatorPage() {
                       placeholder={t("calc.step4Placeholder")}
                       value={desiredDose}
                       onChange={(e) => setDesiredDose(e.target.value)}
-                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-gray-200 focus:border-emerald-400 focus:outline-none transition-colors bg-gray-50/50 text-gray-800"
+                      className="w-full pl-12 pr-16 py-3.5 rounded-xl border-2 border-dashed border-white/10 focus:border-emerald-400 focus:outline-none transition-colors bg-[#111111]/50 text-gray-200"
                     />
                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-medium">{doseUnit}</span>
                   </div>
@@ -392,7 +392,7 @@ export default function CalculatorPage() {
                   </button>
                   <button
                     onClick={reset}
-                    className="w-14 h-14 rounded-xl border-2 border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all"
+                    className="w-14 h-14 rounded-xl border-2 border-white/10 flex items-center justify-center text-gray-400 hover:text-gray-400 hover:border-white/15 transition-all"
                     title={t("calc.resetTitle")}
                   >
                     <RotateCcw className="w-5 h-5" />
@@ -409,27 +409,27 @@ export default function CalculatorPage() {
                       className="mt-8 ml-11"
                     >
                       <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200">
-                        <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
+                        <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Outfit'] flex items-center gap-2">
                           <TrendingUp className="w-5 h-5 text-emerald-500" />
                           {t("calc.resultsTitle")}
                         </h3>
                         <div className="grid grid-cols-2 gap-4">
-                          <div className="bg-white rounded-xl p-4 shadow-sm">
+                          <div className="bg-[#0A0A0A] rounded-xl p-4 shadow-lg shadow-black/20">
                             <div className="text-sm text-gray-500 mb-1">{t("calc.concentration")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.concentration}</div>
                             <div className="text-xs text-emerald-600 font-medium">mg/mL</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 shadow-sm">
+                          <div className="bg-[#0A0A0A] rounded-xl p-4 shadow-lg shadow-black/20">
                             <div className="text-sm text-gray-500 mb-1">{t("calc.volumePerDose")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.volumePerDose}</div>
                             <div className="text-xs text-emerald-600 font-medium">mL</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 shadow-sm">
+                          <div className="bg-[#0A0A0A] rounded-xl p-4 shadow-lg shadow-black/20">
                             <div className="text-sm text-gray-500 mb-1">{t("calc.syringeUnits")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.syringeUnits}</div>
                             <div className="text-xs text-emerald-600 font-medium">units</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 shadow-sm">
+                          <div className="bg-[#0A0A0A] rounded-xl p-4 shadow-lg shadow-black/20">
                             <div className="text-sm text-gray-500 mb-1">{t("calc.dosesPerVial")}</div>
                             <div className="text-2xl font-bold text-[#1a365d]">{result.dosesPerVial}</div>
                             <div className="text-xs text-emerald-600 font-medium">doses</div>
@@ -450,8 +450,8 @@ export default function CalculatorPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               {/* {t("calc.howItWorks")} */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
-                <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
+              <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/5 p-6">
+                <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Outfit'] flex items-center gap-2">
                   <CalcIcon className="w-5 h-5 text-emerald-500" />
                   {t("calc.howItWorks")}
                 </h3>
@@ -477,7 +477,7 @@ export default function CalculatorPage() {
 
               {/* Reference Images */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl shadow-lg border border-white/5 overflow-hidden">
                   <img
                     src="https://private-us-east-1.manuscdn.com/sessionFile/5KF97Ry4z8Tn65hMbzuItk/sandbox/xR7krRk7qJweEFfAXSo7Hk-img-1_1771802556000_na1fn_cmVzZWFyY2hlci1wZXB0aWRlLXZpYWw.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNUtGOTdSeTR6OFRuNjVoTWJ6dUl0ay9zYW5kYm94L3hSN2tyUms3cUp3ZUVGZkFYU283SGstaW1nLTFfMTc3MTgwMjU1NjAwMF9uYTFmbl9jbVZ6WldGeVkyaGxjaTF3WlhCMGFXUmxMWFpwWVd3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=GFeN4mWFCTgmnpCGME4DvhSEYtQELYY4g0QMuqwEhLO1Owkqema0nz2lZgFaOuNfk9XSVL6QzLgc2jfPh7CQIfTJL8F6LwXbf1OjXHSzYvaeYDNGBARoaLbsogF6ru-fdfeJbCyAOYEqix8Sc8aHmYxgpQWVxUGjnOz0c-pHoIqp-IZn33pVz~4fUP0n~qi49XlHrMJerq0f2GUVvbqO3X9qOFyBSRJesTB8aaXACmOCWgpqV98gWdU3d5GZbuiBEcFhySz50lqyBeQouIFwfIOEnF42XMn5hvH~FTdgC4ph12PrOpFFbXuavcmpTE-dBzfCtnouBRVHu8sWlnvPrg__"
                     alt="Peptide Vial"
@@ -488,7 +488,7 @@ export default function CalculatorPage() {
                     <div className="text-xs text-gray-500">{t("calc.lyophilized")}</div>
                   </div>
                 </div>
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-xl shadow-lg border border-white/5 overflow-hidden">
                   <img
                     src="https://private-us-east-1.manuscdn.com/sessionFile/5KF97Ry4z8Tn65hMbzuItk/sandbox/xR7krRk7qJweEFfAXSo7Hk-img-2_1771802561000_na1fn_dTEwMC1pbnN1bGluLXN5cmluZ2Vz.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvNUtGOTdSeTR6OFRuNjVoTWJ6dUl0ay9zYW5kYm94L3hSN2tyUms3cUp3ZUVGZkFYU283SGstaW1nLTJfMTc3MTgwMjU2MTAwMF9uYTFmbl9kVEV3TUMxcGJuTjFiR2x1TFhONWNtbHVaMlZ6LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=FVgmEYP1o2UZ-VdrDRW9JCoOd8RfhL3rt6VUA7ibG1LjrELpJOpUIoYTFP2iSFVMigvb0tPrMO8VHJ57LnIMBmcG3SQOqlrxRG5IMWrnLOORHc7~44IjZFmWRivmctIGXuGht59CFkE9M5zk-0CAkZA5ytfI1Fai5ZAEVZkA-ydBqM6U-38KwLtzI26frqcZWjaq2DXLgwDHeBqdfZjZblb9mjBuMVd6gpbBsTwNLTOoSCwOORbaXpgbM8v7VjLUfDhRQMTHfZdsXlS3EUVV0VEjOblIneAeRRrc~S-2PZE81rtfbiA~FqgvHkCQouUO10NruFmwH4VsqwGdbzlosA__"
                     alt="U-100 Syringe"
@@ -502,8 +502,8 @@ export default function CalculatorPage() {
               </div>
 
               {/* {t("calc.keyFormulas")} */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
-                <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Sora'] flex items-center gap-2">
+              <div className="bg-[#0A0A0A]/90 backdrop-blur-sm rounded-2xl shadow-xl border border-white/5 p-6">
+                <h3 className="text-lg font-bold text-[#1a365d] mb-4 font-['Outfit'] flex items-center gap-2">
                   <Hash className="w-5 h-5 text-emerald-500" />
                   {t("calc.keyFormulas")}
                 </h3>
@@ -514,7 +514,7 @@ export default function CalculatorPage() {
                     { label: t("calc.syringeUnits"), formula: t("calc.formula3"), unit: t("calc.units") },
                     { label: t("calc.dosesPerVial"), formula: t("calc.formula4"), unit: t("calc.doses") },
                   ].map((item) => (
-                    <div key={item.label} className="flex items-center justify-between py-2.5 border-b border-gray-100 last:border-0">
+                    <div key={item.label} className="flex items-center justify-between py-2.5 border-b border-white/5 last:border-0">
                       <div>
                         <div className="font-semibold text-sm text-[#1a365d]">{item.label}</div>
                         <div className="text-xs text-gray-500">{item.formula}</div>
@@ -548,13 +548,13 @@ export default function CalculatorPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-2 font-['Sora'] text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a365d] mb-2 font-['Outfit'] text-center">
               {t("calc.faqTitle1")}{" "}
               <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
                 {t("calc.faqTitle2")}
               </span>
             </h2>
-            <p className="text-gray-600 text-center mb-10">{t("calc.faqSubtitle")}</p>
+            <p className="text-gray-400 text-center mb-10">{t("calc.faqSubtitle")}</p>
             
             <div className="space-y-4">
               <FAQItem
