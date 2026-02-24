@@ -6,6 +6,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -501,12 +502,12 @@ export default function Peptides() {
                 <p className="text-white/80 text-lg mb-8">
                   {t("peptides.ctaDesc")}
                 </p>
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#4FC3F7] to-[#7B2CBF] text-white font-semibold rounded-xl hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-500"
                 >
                   {t("peptides.ctaBtn")}
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

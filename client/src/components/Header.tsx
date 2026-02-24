@@ -47,13 +47,13 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="text-gray-400 hover:text-white transition-all duration-300 font-medium cursor-pointer hover:scale-110 inline-block relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[#D4AF37] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button
               className="group relative overflow-hidden bg-gradient-to-r from-[#D4AF37] to-[#B8860B] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-500 prc-shine-btn text-black font-semibold"
@@ -84,14 +84,14 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden py-6 space-y-4 border-t border-white/10">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="block text-gray-400 hover:text-white transition-all duration-300 py-2 cursor-pointer hover:scale-105 origin-left"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button
               className="w-full relative overflow-hidden bg-gradient-to-r from-[#D4AF37] to-[#B8860B] prc-shine-btn text-black font-semibold"
