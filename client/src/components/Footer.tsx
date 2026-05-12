@@ -125,14 +125,16 @@ export default function Footer() {
 
         {/* TRU & CO Corporate Structure */}
         <div className="mt-8 pt-6 border-t border-white/5 flex flex-col items-center gap-3">
-          <img
-            src="/images/tru-co-logo.webp"
-            alt="TRU & CO."
-            className="h-8 w-auto opacity-70"
-          />
-          <p className="text-gray-500 text-xs text-center">
-            ARKAN Biosciences is a subsidiary entity operating under the corporate structure of TRU &amp; CO.
-          </p>
+          <a href="https://tru-co.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 hover:opacity-100 transition-opacity">
+            <img
+              src="/images/tru-co-logo.webp"
+              alt="TRU & CO."
+              className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+            />
+            <p className="text-gray-500 text-xs text-center hover:text-gray-400 transition-colors">
+              ARKAN Biosciences is a subsidiary entity operating under the corporate structure of TRU &amp; CO.
+            </p>
+          </a>
         </div>
       </div>
     </footer>
